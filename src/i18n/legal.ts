@@ -43,7 +43,7 @@ Billing is handled entirely by Apple. We don't store credit card data. You can c
 
 ## Contact
 
-Questions about privacy? Email **mr.sa4d@gmail.com**.
+Questions about privacy? Email **devxengine@gmail.com**.
 
 For the most up-to-date legal version, see [enginesstudio.tech/privacy/keyai](https://enginesstudio.tech/privacy/keyai).
 `,
@@ -72,7 +72,7 @@ KeyAI is provided "as is." We're not liable for damages arising from the use of 
 
 ## Contact
 
-Questions about these terms? Email **mr.sa4d@gmail.com**.
+Questions about these terms? Email **devxengine@gmail.com**.
 `,
     lastUpdated: 'Last updated: May 11, 2026',
   },
@@ -110,7 +110,7 @@ Die Abrechnung erfolgt vollständig über Apple. Wir speichern keine Kreditkarte
 
 ## Kontakt
 
-Fragen zum Datenschutz? E-Mail an **mr.sa4d@gmail.com**.
+Fragen zum Datenschutz? E-Mail an **devxengine@gmail.com**.
 
 Aktuelle Rechtsversion siehe [enginesstudio.tech/privacy/keyai](https://enginesstudio.tech/privacy/keyai).
 `,
@@ -139,7 +139,7 @@ KeyAI wird "wie besehen" bereitgestellt. Wir haften nicht für Schäden über da
 
 ## Kontakt
 
-Fragen zu diesen Bedingungen? E-Mail an **mr.sa4d@gmail.com**.
+Fragen zu diesen Bedingungen? E-Mail an **devxengine@gmail.com**.
 `,
     lastUpdated: 'Zuletzt aktualisiert: 11. Mai 2026',
   },
@@ -177,7 +177,7 @@ La facturation est entièrement gérée par Apple. Nous ne stockons aucune donn�
 
 ## Contact
 
-Des questions sur la confidentialité ? Envoyez un email à **mr.sa4d@gmail.com**.
+Des questions sur la confidentialité ? Envoyez un email à **devxengine@gmail.com**.
 
 Version légale à jour : [enginesstudio.tech/privacy/keyai](https://enginesstudio.tech/privacy/keyai).
 `,
@@ -206,7 +206,7 @@ KeyAI est fourni "en l'état". Nous ne sommes pas responsables des dommages au-d
 
 ## Contact
 
-Des questions sur ces conditions ? Envoyez un email à **mr.sa4d@gmail.com**.
+Des questions sur ces conditions ? Envoyez un email à **devxengine@gmail.com**.
 `,
     lastUpdated: 'Dernière mise à jour : 11 mai 2026',
   },
@@ -244,7 +244,7 @@ La facturación la gestiona Apple por completo. No almacenamos datos de tarjetas
 
 ## Contacto
 
-¿Preguntas sobre privacidad? Envía un email a **mr.sa4d@gmail.com**.
+¿Preguntas sobre privacidad? Envía un email a **devxengine@gmail.com**.
 
 Versión legal actualizada: [enginesstudio.tech/privacy/keyai](https://enginesstudio.tech/privacy/keyai).
 `,
@@ -273,7 +273,7 @@ KeyAI se proporciona "tal cual". No somos responsables de daños más allá de l
 
 ## Contacto
 
-¿Preguntas sobre estos términos? Envía un email a **mr.sa4d@gmail.com**.
+¿Preguntas sobre estos términos? Envía un email a **devxengine@gmail.com**.
 `,
     lastUpdated: 'Última actualización: 11 de mayo de 2026',
   },
@@ -311,7 +311,7 @@ A faturação é gerida totalmente pela Apple. Não armazenamos dados de cartão
 
 ## Contacto
 
-Dúvidas sobre privacidade? Envia email para **mr.sa4d@gmail.com**.
+Dúvidas sobre privacidade? Envia email para **devxengine@gmail.com**.
 
 Versão legal mais atualizada: [enginesstudio.tech/privacy/keyai](https://enginesstudio.tech/privacy/keyai).
 `,
@@ -340,7 +340,7 @@ O KeyAI é fornecido "tal como está". Não somos responsáveis por danos além 
 
 ## Contacto
 
-Dúvidas sobre estes termos? Envia email para **mr.sa4d@gmail.com**.
+Dúvidas sobre estes termos? Envia email para **devxengine@gmail.com**.
 `,
     lastUpdated: 'Última atualização: 11 de maio de 2026',
   },
@@ -378,7 +378,7 @@ A cobrança é gerenciada totalmente pela Apple. Não armazenamos dados de cart�
 
 ## Contato
 
-Dúvidas sobre privacidade? Envie email para **mr.sa4d@gmail.com**.
+Dúvidas sobre privacidade? Envie email para **devxengine@gmail.com**.
 
 Versão legal mais atualizada: [enginesstudio.tech/privacy/keyai](https://enginesstudio.tech/privacy/keyai).
 `,
@@ -407,7 +407,7 @@ O KeyAI é fornecido "como está". Não somos responsáveis por danos além do e
 
 ## Contato
 
-Dúvidas sobre estes termos? Envie email para **mr.sa4d@gmail.com**.
+Dúvidas sobre estes termos? Envie email para **devxengine@gmail.com**.
 `,
     lastUpdated: 'Última atualização: 11 de maio de 2026',
   },
