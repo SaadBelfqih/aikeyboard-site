@@ -1,0 +1,58 @@
+---
+import type { Locale } from '~/i18n/locales';
+import { localizedPath } from '~/i18n/locales';
+import { t } from '~/i18n/ui';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const ui = t(locale);
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border py-12 mt-12">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+      <div>
+        <a href={localizedPath(locale, '/')} class="flex items-center gap-2 font-display font-semibold text-lg mb-3">
+          <span class="grid place-items-center h-8 w-8 rounded-xl bg-gradient-to-br from-accent to-accent-soft text-white font-bold">K</span>
+          KeyAI
+        </a>
+        <p class="text-sm text-text-muted leading-relaxed">{ui.footer.tagline}</p>
+      </div>
+
+      <div>
+        <div class="text-xs uppercase tracking-wider text-text-muted mb-3 font-semibold">{ui.footer.productH}</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href={`${localizedPath(locale, '/')}${localizedPath(locale, '/') === '/' ? '' : ''}#features`} class="text-text-muted hover:text-text transition-colors">{ui.nav.features}</a></li>
+          <li><a href={`${localizedPath(locale, '/')}${localizedPath(locale, '/') === '/' ? '' : ''}#pricing`} class="text-text-muted hover:text-text transition-colors">{ui.nav.pricing}</a></li>
+          <li><a href={localizedPath(locale, '/blog')} class="text-text-muted hover:text-text transition-colors">{ui.nav.blog}</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="text-xs uppercase tracking-wider text-text-muted mb-3 font-semibold">{ui.footer.compareH}</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href={localizedPath(locale, '/vs/grammarly')} class="text-text-muted hover:text-text transition-colors">vs Grammarly</a></li>
+          <li><a href={localizedPath(locale, '/vs/chatgpt-keyboard')} class="text-text-muted hover:text-text transition-colors">vs ChatGPT</a></li>
+          <li><a href={localizedPath(locale, '/vs/apple-intelligence')} class="text-text-muted hover:text-text transition-colors">vs Apple Intelligence</a></li>
+          <li><a href={localizedPath(locale, '/vs/keybot')} class="text-text-muted hover:text-text transition-colors">vs Keybot</a></li>
+          <li><a href={localizedPath(locale, '/vs/typeai')} class="text-text-muted hover:text-text transition-colors">vs TypeAI</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="text-xs uppercase tracking-wider text-text-muted mb-3 font-semibold">{ui.footer.legalH}</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href={localizedPath(locale, '/privacy')} class="text-text-muted hover:text-text transition-colors">{ui.footer.privacy}</a></li>
+          <li><a href={localizedPath(locale, '/terms')} class="text-text-muted hover:text-text transition-colors">{ui.footer.terms}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-border">
+      <p class="text-xs text-text-muted">© {year} KeyAI · {ui.footer.rights}</p>
+      <LanguageSwitcher locale={locale} />
+    </div>
+  </div>
+</footer>

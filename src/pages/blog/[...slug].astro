@@ -1,0 +1,131 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Nav from '~/components/Nav.astro';
+import Footer from '~/components/Footer.astro';
+import FinalCTA from '~/components/FinalCTA.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection('blog', ({ data }) => data.locale === 'en');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+};
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const locale = 'en' as const;
+
+const blogPostSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  inLanguage: 'en-US',
+  author: { '@type': 'Organization', name: 'KeyAI' },
+  publisher: { '@type': 'Organization', name: 'KeyAI', logo: { '@type': 'ImageObject', url: 'https://bestaikeyboard.com/icon-512.png' } },
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+};
+---
+
+<BaseLayout
+  locale={locale}
+  path={`/blog/${post.id}`}
+  title={post.data.title}
+  description={post.data.description}
+  schema={blogPostSchema}
+>
+  <Nav locale={locale} />
+  <main>
+    <article class="pt-12 sm:pt-16 pb-16">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <header class="mb-10">
+          <div class="text-5xl mb-4">{post.data.heroEmoji ?? '✨'}</div>
+          <h1 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight">
+            <span class="headline-gradient">{post.data.title}</span>
+          </h1>
+          <div class="mt-4 text-sm text-text-muted">
+            {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </div>
+        </header>
+
+        <div class="prose-content text-text leading-relaxed">
+          <Content />
+        </div>
+      </div>
+    </article>
+
+    <FinalCTA locale={locale} />
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style is:global>
+  .prose-content { font-size: 1.05rem; }
+  .prose-content > * + * { margin-top: 1.1rem; }
+  .prose-content h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+    color: var(--color-text);
+  }
+  @media (min-width: 640px) {
+    .prose-content h2 { font-size: 1.75rem; }
+  }
+  .prose-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .prose-content p { color: var(--color-text-muted); }
+  .prose-content a {
+    color: var(--color-accent-soft);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent-soft) 30%, transparent);
+    transition: color 0.15s;
+  }
+  .prose-content a:hover { color: var(--color-text); border-bottom-color: var(--color-text); }
+  .prose-content strong { color: var(--color-text); font-weight: 600; }
+  .prose-content ul, .prose-content ol { padding-left: 1.5rem; color: var(--color-text-muted); }
+  .prose-content ul { list-style-type: disc; }
+  .prose-content ol { list-style-type: decimal; }
+  .prose-content li + li { margin-top: 0.4rem; }
+  .prose-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    background: rgba(255,255,255,0.02);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  .prose-content th, .prose-content td {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .prose-content th { font-weight: 600; color: var(--color-text); background: rgba(255,255,255,0.03); }
+  .prose-content td { color: var(--color-text-muted); }
+  .prose-content tr:last-child td { border-bottom: 0; }
+  .prose-content code {
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    background: rgba(255,255,255,0.06);
+    padding: 0.15rem 0.4rem;
+    border-radius: 0.3rem;
+    font-size: 0.9em;
+  }
+  .prose-content blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+</style>

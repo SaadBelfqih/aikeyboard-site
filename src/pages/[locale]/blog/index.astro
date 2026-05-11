@@ -1,0 +1,74 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Nav from '~/components/Nav.astro';
+import Footer from '~/components/Footer.astro';
+import FinalCTA from '~/components/FinalCTA.astro';
+import { LOCALES, type Locale, localizedPath } from '~/i18n/locales';
+import { t } from '~/i18n/ui';
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return LOCALES
+    .filter((l) => l !== 'en')
+    .map((locale) => ({ params: { locale } }));
+};
+
+const { locale } = Astro.params as { locale: Locale };
+const ui = t(locale);
+
+const blogTitles: Record<Locale, { title: string; desc: string }> = {
+  en:      { title: 'Better writing on iPhone, one tap at a time', desc: 'Guides and breakdowns on AI keyboards for iPhone.' },
+  de:      { title: 'Besser schreiben auf iPhone, ein Tipp nach dem anderen', desc: 'Anleitungen und Vergleiche zu KI-Tastaturen für iPhone.' },
+  fr:      { title: 'Mieux écrire sur iPhone, un tap à la fois', desc: 'Guides et comparaisons sur les claviers IA pour iPhone.' },
+  es:      { title: 'Mejor escritura en iPhone, un toque a la vez', desc: 'Guías y comparaciones sobre teclados IA para iPhone.' },
+  pt:      { title: 'Melhor escrita no iPhone, um toque de cada vez', desc: 'Guias e comparações sobre teclados IA para iPhone.' },
+  'pt-br': { title: 'Melhor escrita no iPhone, um toque por vez', desc: 'Guias e comparações sobre teclados IA para iPhone.' },
+};
+const { title, desc } = blogTitles[locale];
+
+// For non-EN locales, point to EN blog posts as canonical (translations coming soon)
+const enPosts = [
+  { slug: 'best-ai-keyboards-iphone-2026', emoji: '⌨️', title: 'Best AI Keyboard Apps for iPhone in 2026' },
+  { slug: 'ai-keyboard-vs-apple-intelligence', emoji: '🤖', title: 'AI Keyboard vs Apple Intelligence: When to Use Which' },
+  { slug: 'how-to-add-ai-keyboard-iphone', emoji: '📱', title: 'How to Add an AI Keyboard to iPhone (Step-by-Step)' },
+];
+---
+
+<BaseLayout
+  locale={locale}
+  path="/blog"
+  title={`${title} — KeyAI Blog`}
+  description={desc}
+>
+  <Nav locale={locale} />
+  <main>
+    <section class="pt-12 sm:pt-16 pb-10">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="text-xs uppercase tracking-[0.2em] text-accent-soft font-medium mb-3">{ui.nav.blog}</div>
+        <h1 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl">
+          <span class="headline-gradient">{title}</span>
+        </h1>
+        <p class="mt-5 text-base sm:text-lg text-text-muted leading-relaxed max-w-2xl">{desc}</p>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <ul class="grid sm:grid-cols-2 gap-4">
+          {enPosts.map((post) => (
+            <li>
+              <a href={`/blog/${post.slug}`} class="block glass rounded-2xl p-6 hover:bg-white/[0.06] transition-colors h-full">
+                <div class="text-4xl mb-3">{post.emoji}</div>
+                <h2 class="font-display font-semibold text-xl leading-tight mb-2">{post.title}</h2>
+                <p class="text-sm text-text-muted leading-relaxed">English · translations coming soon</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <FinalCTA locale={locale} />
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>

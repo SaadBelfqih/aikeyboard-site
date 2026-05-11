@@ -1,0 +1,40 @@
+---
+import type { Locale } from '~/i18n/locales';
+import { localizedPath } from '~/i18n/locales';
+import { t } from '~/i18n/ui';
+import AppStoreBadge from './AppStoreBadge.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const ui = t(locale);
+const home = localizedPath(locale, '/');
+---
+
+<header class="sticky top-0 z-40 backdrop-blur-2xl bg-bg/70 border-b border-border">
+  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <a href={home} class="flex items-center gap-2 font-display font-semibold text-lg">
+      <span class="grid place-items-center h-8 w-8 rounded-xl bg-gradient-to-br from-accent to-accent-soft text-white font-bold">K</span>
+      <span class="hidden sm:inline">KeyAI</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-6 text-sm text-text-muted">
+      <a href={`${home === '/' ? '' : home}#features`} class="hover:text-text transition-colors">{ui.nav.features}</a>
+      <a href={`${home === '/' ? '' : home}#pricing`} class="hover:text-text transition-colors">{ui.nav.pricing}</a>
+      <a href={localizedPath(locale, '/vs/grammarly')} class="hover:text-text transition-colors">{ui.nav.compare}</a>
+      <a href={localizedPath(locale, '/blog')} class="hover:text-text transition-colors">{ui.nav.blog}</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <span class="hidden lg:inline-flex items-center gap-1.5 rounded-full bg-accent/15 text-accent-soft px-3 py-1 text-xs font-medium border border-accent/30">
+        {ui.nav.usersPill}
+      </span>
+      <LanguageSwitcher locale={locale} />
+      <div class="hidden sm:block">
+        <AppStoreBadge locale={locale} size="sm" label={ui.nav.getApp} />
+      </div>
+    </div>
+  </nav>
+</header>

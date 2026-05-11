@@ -1,0 +1,167 @@
+---
+import type { Locale } from '~/i18n/locales';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+
+// Demo conversation per locale
+const demos: Record<Locale, {
+  bubbleIn: string;
+  bubbleOut: string;
+  composer: string;
+  toolbar: { label: string; emoji: string }[];
+}> = {
+  en: {
+    bubbleIn: 'Hey! Are you free Friday?',
+    bubbleOut: "I'd love to. What time works?",
+    composer: 'Yeah sure friday works for me',
+    toolbar: [
+      { emoji: '✓', label: 'Grammar' },
+      { emoji: '🎭', label: 'Tone' },
+      { emoji: '🤖', label: 'Ask AI' },
+      { emoji: '🌐', label: 'Translate' },
+      { emoji: '💬', label: 'Reply' },
+    ],
+  },
+  de: {
+    bubbleIn: 'Hey! Bist du Freitag frei?',
+    bubbleOut: 'Sehr gerne. Welche Uhrzeit passt?',
+    composer: 'ja klar freitag passt mir',
+    toolbar: [
+      { emoji: '✓', label: 'Grammatik' },
+      { emoji: '🎭', label: 'Ton' },
+      { emoji: '🤖', label: 'KI fragen' },
+      { emoji: '🌐', label: 'Übersetzen' },
+      { emoji: '💬', label: 'Antwort' },
+    ],
+  },
+  fr: {
+    bubbleIn: 'Salut ! Tu es libre vendredi ?',
+    bubbleOut: 'Avec plaisir. Quelle heure te convient ?',
+    composer: 'ouais ok vendredi ça marche',
+    toolbar: [
+      { emoji: '✓', label: 'Grammaire' },
+      { emoji: '🎭', label: 'Ton' },
+      { emoji: '🤖', label: 'Demander' },
+      { emoji: '🌐', label: 'Traduire' },
+      { emoji: '💬', label: 'Réponse' },
+    ],
+  },
+  es: {
+    bubbleIn: '¡Hola! ¿Estás libre el viernes?',
+    bubbleOut: 'Me encantaría. ¿A qué hora te viene bien?',
+    composer: 'si claro el viernes me viene bien',
+    toolbar: [
+      { emoji: '✓', label: 'Gramática' },
+      { emoji: '🎭', label: 'Tono' },
+      { emoji: '🤖', label: 'Preguntar' },
+      { emoji: '🌐', label: 'Traducir' },
+      { emoji: '💬', label: 'Respuesta' },
+    ],
+  },
+  pt: {
+    bubbleIn: 'Olá! Estás livre na sexta?',
+    bubbleOut: 'Adorava. A que horas te dá jeito?',
+    composer: 'sim claro sexta dá-me jeito',
+    toolbar: [
+      { emoji: '✓', label: 'Gramática' },
+      { emoji: '🎭', label: 'Tom' },
+      { emoji: '🤖', label: 'Pergunta' },
+      { emoji: '🌐', label: 'Traduzir' },
+      { emoji: '💬', label: 'Resposta' },
+    ],
+  },
+  'pt-br': {
+    bubbleIn: 'Oi! Você tá livre sexta?',
+    bubbleOut: 'Adoraria. Que horas funciona pra você?',
+    composer: 'sim claro sexta funciona pra mim',
+    toolbar: [
+      { emoji: '✓', label: 'Gramática' },
+      { emoji: '🎭', label: 'Tom' },
+      { emoji: '🤖', label: 'Pergunta' },
+      { emoji: '🌐', label: 'Traduzir' },
+      { emoji: '💬', label: 'Resposta' },
+    ],
+  },
+};
+
+const d = demos[locale];
+---
+
+<div class="relative mx-auto" style="width: 320px;">
+  <!-- Glow -->
+  <div class="absolute -inset-12 bg-accent/30 blur-3xl rounded-full opacity-60 pointer-events-none" aria-hidden="true"></div>
+
+  <!-- Phone frame -->
+  <div class="relative rounded-[3rem] bg-gradient-to-b from-[#1f1f2e] to-[#11111e] p-3 shadow-2xl border border-white/10">
+    <div class="rounded-[2.5rem] overflow-hidden bg-[#0e0e18] aspect-[9/19.5] relative">
+      <!-- Status bar / notch -->
+      <div class="h-7 bg-[#0e0e18] flex items-center justify-center relative">
+        <div class="absolute top-2 left-1/2 -translate-x-1/2 h-5 w-24 bg-black rounded-full"></div>
+      </div>
+
+      <!-- Chat header -->
+      <div class="px-4 py-2 flex items-center gap-2 border-b border-white/5">
+        <button class="text-accent text-lg" aria-hidden="true">‹</button>
+        <div class="h-8 w-8 rounded-full bg-gradient-to-br from-pink-400 to-purple-500"></div>
+        <div class="text-sm font-medium">Alex</div>
+      </div>
+
+      <!-- Messages -->
+      <div class="px-4 py-3 space-y-2 text-[13px]">
+        <div class="flex">
+          <div class="bg-[#2a2a3a] rounded-2xl rounded-tl-md px-3 py-2 max-w-[80%]">
+            {d.bubbleIn}
+          </div>
+        </div>
+        <div class="flex justify-end">
+          <div class="bg-gradient-to-br from-accent to-accent-soft rounded-2xl rounded-tr-md px-3 py-2 max-w-[80%] text-white">
+            {d.bubbleOut}
+          </div>
+        </div>
+      </div>
+
+      <!-- Composer + KeyAI keyboard -->
+      <div class="absolute bottom-0 inset-x-0">
+        <!-- Composer -->
+        <div class="px-3 py-2 border-t border-white/5 bg-[#0e0e18]">
+          <div class="rounded-full bg-[#1f1f2e] px-3 py-1.5 text-xs text-text-muted">
+            {d.composer}
+          </div>
+        </div>
+
+        <!-- KeyAI toolbar -->
+        <div class="bg-gradient-to-b from-accent/20 to-accent/5 border-t border-accent/30 px-2 py-1.5">
+          <div class="flex items-center gap-1.5 overflow-hidden">
+            {d.toolbar.map((tool) => (
+              <div class="flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg bg-white/5 min-w-fit">
+                <span class="text-base leading-none">{tool.emoji}</span>
+                <span class="text-[9px] text-text-muted leading-none">{tool.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Keyboard rows -->
+        <div class="bg-[#1a1a2a] px-1 py-1.5 space-y-1">
+          {['qwertyuiop', 'asdfghjkl', 'zxcvbnm'].map((row, i) => (
+            <div class:list={['flex justify-center gap-0.5', i === 1 ? 'px-3' : '', i === 2 ? 'px-2' : '']}>
+              {row.split('').map((ch) => (
+                <div class="flex-1 max-w-[24px] py-1.5 text-center rounded text-[10px] bg-[#2a2a3a] font-medium">
+                  {ch}
+                </div>
+              ))}
+            </div>
+          ))}
+          <div class="flex justify-center gap-1 mt-1">
+            <div class="px-3 py-1.5 rounded bg-[#2a2a3a] text-[10px] text-text-muted">123</div>
+            <div class="flex-1 py-1.5 rounded bg-[#2a2a3a] text-[10px] text-center text-text-muted">space</div>
+            <div class="px-3 py-1.5 rounded bg-accent text-[10px] text-white font-medium">return</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

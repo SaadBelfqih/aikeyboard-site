@@ -1,0 +1,115 @@
+---
+import { SEO } from 'astro-seo';
+import '~/styles/global.css';
+import { LOCALES, LOCALE_META, type Locale, localizedPath, stripLocaleFromPath } from '~/i18n/locales';
+import { t } from '~/i18n/ui';
+
+interface Props {
+  locale: Locale;
+  path?: string; // canonical path WITHOUT locale prefix, e.g. "/" or "/features" or "/vs/grammarly"
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { locale, path, title, description, ogImage, noindex, schema } = Astro.props;
+const ui = t(locale);
+const meta = LOCALE_META[locale];
+
+const cleanPath = path ?? stripLocaleFromPath(Astro.url.pathname);
+const SITE = 'https://bestaikeyboard.com';
+const canonicalPath = localizedPath(locale, cleanPath);
+const canonical = new URL(canonicalPath, SITE).href;
+
+const pageTitle = title ?? ui.meta.title;
+const pageDesc = description ?? ui.meta.description;
+const ogImg = ogImage ?? `${SITE}/og/og-${locale}.png`;
+
+// hreflang alternates for every locale
+const alternates = LOCALES.map((loc) => ({
+  hreflang: LOCALE_META[loc].hreflang,
+  href: new URL(localizedPath(loc, cleanPath), SITE).href,
+}));
+
+// App Store URL with locale tracking
+const appStoreCC = meta.appStoreCountry;
+const appStoreUrl = `https://apps.apple.com/${appStoreCC}/app/id6466343783?pt=&ct=web-${locale}&mt=8`;
+
+// JSON-LD: site-wide + page-specific
+const siteSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'KeyAI',
+    url: SITE,
+    logo: `${SITE}/icon-512.png`,
+    sameAs: [appStoreUrl],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'KeyAI · The Best AI Keyboard',
+    url: SITE,
+    inLanguage: meta.hreflang,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${SITE}/search?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  },
+];
+
+const pageSchemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
+const allSchemas = [...siteSchema, ...pageSchemas];
+---
+
+<!doctype html>
+<html lang={meta.htmlLang} dir={meta.dir}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0a14" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <SEO
+      title={pageTitle}
+      description={pageDesc}
+      canonical={canonical}
+      noindex={noindex}
+      openGraph={{
+        basic: {
+          title: ui.meta.ogTitle,
+          type: 'website',
+          image: ogImg,
+          url: canonical,
+        },
+        optional: {
+          description: pageDesc,
+          siteName: 'KeyAI',
+          locale: meta.hreflang.replace('-', '_'),
+        },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        title: ui.meta.ogTitle,
+        description: pageDesc,
+        image: ogImg,
+      }}
+    />
+
+    {alternates.map((a) => (
+      <link rel="alternate" hreflang={a.hreflang} href={a.href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL(cleanPath, SITE).href} />
+
+    {allSchemas.map((s) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

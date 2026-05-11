@@ -1,0 +1,26 @@
+---
+import type { Locale } from '~/i18n/locales';
+import { t } from '~/i18n/ui';
+import AppStoreBadge from './AppStoreBadge.astro';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const ui = t(locale);
+---
+
+<section class="py-20 sm:py-28">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <div class="relative rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-accent/30 via-accent/10 to-transparent border border-accent/40 px-8 py-12 sm:px-12 sm:py-16 text-center">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(164,139,255,0.3),transparent_60%)] pointer-events-none" aria-hidden="true"></div>
+      <div class="relative">
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight max-w-2xl mx-auto">
+          <span class="headline-gradient">{ui.finalCta.title}</span>
+        </h2>
+        <p class="mt-4 text-text-muted">{ui.finalCta.subtitle}</p>
+        <div class="mt-8 flex justify-center">
+          <AppStoreBadge locale={locale} size="lg" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

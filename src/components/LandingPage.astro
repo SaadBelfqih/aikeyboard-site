@@ -1,0 +1,68 @@
+---
+import type { Locale } from '~/i18n/locales';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Nav from '~/components/Nav.astro';
+import Hero from '~/components/Hero.astro';
+import FeatureGrid from '~/components/FeatureGrid.astro';
+import WorksEverywhere from '~/components/WorksEverywhere.astro';
+import Privacy from '~/components/Privacy.astro';
+import Pricing from '~/components/Pricing.astro';
+import FAQ from '~/components/FAQ.astro';
+import FinalCTA from '~/components/FinalCTA.astro';
+import Footer from '~/components/Footer.astro';
+import { t } from '~/i18n/ui';
+import { LOCALE_META } from '~/i18n/locales';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const ui = t(locale);
+const meta = LOCALE_META[locale];
+const SITE = 'https://bestaikeyboard.com';
+
+const mobileAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MobileApplication',
+  name: 'KeyAI · AI Keyboard',
+  alternateName: 'KeyAI',
+  description: ui.meta.description,
+  operatingSystem: 'iOS 15+',
+  applicationCategory: 'UtilitiesApplication',
+  url: SITE,
+  inLanguage: meta.hreflang,
+  offers: [
+    { '@type': 'Offer', price: '4.99', priceCurrency: locale === 'pt-br' ? 'BRL' : (locale === 'en' ? 'USD' : 'EUR'), name: 'Weekly subscription' },
+    { '@type': 'Offer', price: '39.99', priceCurrency: locale === 'pt-br' ? 'BRL' : (locale === 'en' ? 'USD' : 'EUR'), name: 'Yearly subscription' },
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.6',
+    ratingCount: '100000',
+    bestRating: '5',
+    worstRating: '1',
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: ui.faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+
+<BaseLayout locale={locale} path="/" schema={[mobileAppSchema, faqSchema]}>
+  <Nav locale={locale} />
+  <main>
+    <Hero locale={locale} />
+    <FeatureGrid locale={locale} />
+    <WorksEverywhere locale={locale} />
+    <Privacy locale={locale} />
+    <Pricing locale={locale} />
+    <FAQ locale={locale} />
+    <FinalCTA locale={locale} />
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>

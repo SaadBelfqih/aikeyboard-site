@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Nav from '~/components/Nav.astro';
+import Footer from '~/components/Footer.astro';
+import FinalCTA from '~/components/FinalCTA.astro';
+import { t } from '~/i18n/ui';
+
+const locale = 'en' as const;
+const ui = t(locale);
+
+const posts = (await getCollection('blog', ({ data }) => data.locale === locale))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<BaseLayout
+  locale={locale}
+  path="/blog"
+  title="KeyAI Blog — AI keyboards, iOS writing, and productivity"
+  description="Guides and breakdowns on AI keyboards for iPhone — comparisons, how-tos, and the state of mobile AI writing in 2026."
+>
+  <Nav locale={locale} />
+  <main>
+    <section class="pt-12 sm:pt-16 pb-10">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="text-xs uppercase tracking-[0.2em] text-accent-soft font-medium mb-3">{ui.nav.blog}</div>
+        <h1 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl">
+          <span class="headline-gradient">Better writing on iPhone, one tap at a time</span>
+        </h1>
+        <p class="mt-5 text-base sm:text-lg text-text-muted leading-relaxed max-w-2xl">
+          Guides, breakdowns, and comparisons on AI keyboards for iPhone. From people who use them every day.
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <ul class="grid sm:grid-cols-2 gap-4">
+          {posts.map((post) => (
+            <li>
+              <a href={`/blog/${post.id}`} class="block glass rounded-2xl p-6 hover:bg-white/[0.06] transition-colors h-full">
+                <div class="text-4xl mb-3">{post.data.heroEmoji ?? '✨'}</div>
+                <h2 class="font-display font-semibold text-xl leading-tight mb-2">{post.data.title}</h2>
+                <p class="text-sm text-text-muted leading-relaxed line-clamp-3">{post.data.description}</p>
+                <div class="mt-4 text-xs text-text-muted">
+                  {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <FinalCTA locale={locale} />
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+import type { Locale } from '~/i18n/locales';
+import { t } from '~/i18n/ui';
+import AppStoreBadge from './AppStoreBadge.astro';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const ui = t(locale);
+
+// Display prices per locale (display only - real billing via App Store)
+const prices: Record<Locale, { weekly: string; yearly: string }> = {
+  en:      { weekly: '$4.99',  yearly: '$39.99'  },
+  de:      { weekly: '4,99 €', yearly: '39,99 €' },
+  fr:      { weekly: '4,99 €', yearly: '39,99 €' },
+  es:      { weekly: '4,99 €', yearly: '39,99 €' },
+  pt:      { weekly: '4,99 €', yearly: '39,99 €' },
+  'pt-br': { weekly: 'R$ 24,90', yearly: 'R$ 199,90' },
+};
+const p = prices[locale];
+---
+
+<section id="pricing" class="py-20 sm:py-28 border-t border-border">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <div class="text-xs uppercase tracking-[0.2em] text-accent-soft font-medium mb-3">{ui.pricing.eyebrow}</div>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl">
+        <span class="headline-gradient">{ui.pricing.title}</span>
+      </h2>
+      <div class="mt-4 inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs text-text-muted">
+        <span class="text-amber-300">★</span> {ui.pricing.trustLine}
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+      <!-- Weekly -->
+      <div class="glass rounded-3xl p-6 sm:p-8 relative">
+        <div class="text-sm text-text-muted">{ui.pricing.weekly}</div>
+        <div class="mt-3 flex items-baseline gap-1">
+          <span class="text-4xl sm:text-5xl font-bold">{p.weekly}</span>
+          <span class="text-sm text-text-muted">{ui.pricing.perWeek}</span>
+        </div>
+        <p class="mt-3 text-sm text-text-muted">{ui.pricing.trial}</p>
+      </div>
+
+      <!-- Yearly (recommended) -->
+      <div class="relative rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/40 shadow-2xl shadow-accent/20">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-accent text-white text-xs font-bold uppercase tracking-wide">
+          {ui.pricing.save}
+        </div>
+        <div class="text-sm text-accent-soft font-medium">{ui.pricing.yearly}</div>
+        <div class="mt-3 flex items-baseline gap-1">
+          <span class="text-4xl sm:text-5xl font-bold">{p.yearly}</span>
+          <span class="text-sm text-text-muted">{ui.pricing.perYear}</span>
+        </div>
+        <p class="mt-3 text-sm text-text-muted">{ui.pricing.trial}</p>
+      </div>
+    </div>
+
+    <div class="mt-8 flex flex-col items-center gap-3">
+      <AppStoreBadge locale={locale} size="lg" label={ui.pricing.cta} />
+      <p class="text-xs text-text-muted">{ui.pricing.cancelAnytime}</p>
+    </div>
+  </div>
+</section>

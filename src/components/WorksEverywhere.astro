@@ -1,0 +1,40 @@
+---
+import type { Locale } from '~/i18n/locales';
+import { t } from '~/i18n/ui';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const ui = t(locale);
+
+const apps = [
+  { name: 'iMessage', emoji: '💬', color: 'from-green-400 to-emerald-500' },
+  { name: 'Mail',     emoji: '✉️', color: 'from-sky-400 to-blue-500' },
+  { name: 'WhatsApp', emoji: '📞', color: 'from-emerald-400 to-green-600' },
+  { name: 'Notes',    emoji: '📝', color: 'from-amber-300 to-yellow-500' },
+  { name: 'X',        emoji: '𝕏',  color: 'from-zinc-200 to-zinc-400' },
+  { name: 'Instagram',emoji: '📷', color: 'from-pink-400 via-rose-500 to-orange-400' },
+  { name: 'Slack',    emoji: '#',  color: 'from-purple-400 to-fuchsia-500' },
+  { name: 'LinkedIn', emoji: 'in', color: 'from-sky-500 to-blue-700' },
+  { name: 'Telegram', emoji: '✈️', color: 'from-sky-300 to-cyan-500' },
+];
+---
+
+<section class="py-16 sm:py-20 border-t border-border">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl">
+      <span class="headline-gradient">{ui.works.title}</span>
+    </h2>
+    <p class="mt-3 text-text-muted max-w-xl mx-auto">{ui.works.subtitle}</p>
+
+    <div class="mt-10 flex flex-wrap justify-center gap-3 sm:gap-4">
+      {apps.map((app) => (
+        <div class="glass rounded-2xl px-4 py-3 flex items-center gap-2.5">
+          <div class:list={['grid place-items-center h-9 w-9 rounded-xl text-white font-bold text-sm bg-gradient-to-br', app.color]}>
+            {app.emoji}
+          </div>
+          <span class="text-sm font-medium">{app.name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

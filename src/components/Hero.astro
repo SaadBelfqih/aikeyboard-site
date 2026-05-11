@@ -1,0 +1,55 @@
+---
+import type { Locale } from '~/i18n/locales';
+import { t } from '~/i18n/ui';
+import AppStoreBadge from './AppStoreBadge.astro';
+import PhoneMockup from './PhoneMockup.astro';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const ui = t(locale);
+---
+
+<section class="relative overflow-hidden">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 sm:pt-20 lg:pt-24 pb-12">
+    <div class="grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-center">
+      <div class="text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs font-medium text-accent-soft mb-6">
+          <span class="h-1.5 w-1.5 rounded-full bg-success animate-pulse"></span>
+          {ui.nav.usersPill}
+        </div>
+
+        <h1 class="font-display font-bold tracking-tight text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.05]">
+          <span class="headline-gradient">{ui.hero.h1}</span>
+        </h1>
+
+        <p class="mt-5 text-base sm:text-lg text-text-muted max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          {ui.hero.subhead}
+        </p>
+
+        <!-- Social proof line -->
+        <div class="mt-7 flex flex-col sm:flex-row items-center lg:items-start gap-3 sm:gap-5">
+          <div class="flex items-center gap-3">
+            <div class="flex -space-x-2">
+              {['from-pink-400 to-rose-500', 'from-amber-300 to-orange-500', 'from-emerald-300 to-teal-500', 'from-sky-300 to-indigo-500', 'from-purple-300 to-fuchsia-500'].map((g) => (
+                <div class:list={['h-8 w-8 rounded-full ring-2 ring-bg bg-gradient-to-br', g]}></div>
+              ))}
+            </div>
+            <div class="text-left">
+              <div class="flex items-center gap-0.5 text-amber-300 text-sm">★★★★★</div>
+              <div class="text-xs text-text-muted">{ui.hero.socialProof}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3">
+          <AppStoreBadge locale={locale} size="lg" />
+          <span class="text-xs text-text-muted">{ui.hero.rating}</span>
+        </div>
+      </div>
+
+      <div class="relative flex justify-center">
+        <PhoneMockup locale={locale} />
+      </div>
+    </div>
+  </div>
+</section>

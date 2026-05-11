@@ -1,0 +1,61 @@
+---
+import type { Locale } from '~/i18n/locales';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Nav from '~/components/Nav.astro';
+import Footer from '~/components/Footer.astro';
+import { LEGAL, renderLegalMarkdown } from '~/i18n/legal';
+
+interface Props {
+  locale: Locale;
+  kind: 'privacy' | 'terms';
+}
+
+const { locale, kind } = Astro.props;
+const data = LEGAL[locale];
+const title = kind === 'privacy' ? data.privacyTitle : data.termsTitle;
+const intro = kind === 'privacy' ? data.privacyIntro : data.termsIntro;
+const bodyHtml = renderLegalMarkdown(kind === 'privacy' ? data.privacyBodyMarkdown : data.termsBodyMarkdown);
+---
+
+<BaseLayout locale={locale} path={`/${kind}`} title={`${title} · KeyAI`} description={intro}>
+  <Nav locale={locale} />
+  <main>
+    <article class="py-12 sm:py-16">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <header class="mb-10">
+          <h1 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight">
+            <span class="headline-gradient">{title}</span>
+          </h1>
+          <p class="mt-5 text-base sm:text-lg text-text-muted leading-relaxed">{intro}</p>
+          <p class="mt-3 text-xs text-text-muted">{data.lastUpdated}</p>
+        </header>
+
+        <div class="prose-content text-text leading-relaxed" set:html={bodyHtml} />
+      </div>
+    </article>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style is:global>
+  .prose-content { font-size: 1.05rem; }
+  .prose-content > * + * { margin-top: 1.1rem; }
+  .prose-content h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+    color: var(--color-text);
+  }
+  .prose-content p { color: var(--color-text-muted); }
+  .prose-content a {
+    color: var(--color-accent-soft);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent-soft) 30%, transparent);
+  }
+  .prose-content a:hover { color: var(--color-text); }
+  .prose-content strong { color: var(--color-text); font-weight: 600; }
+  .prose-content ul { padding-left: 1.5rem; list-style-type: disc; color: var(--color-text-muted); }
+  .prose-content li + li { margin-top: 0.4rem; }
+</style>
