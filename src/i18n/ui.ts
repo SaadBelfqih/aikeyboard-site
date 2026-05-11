@@ -164,7 +164,7 @@ export const UI: Record<Locale, UIStrings> = {
     },
     hero: {
       h1: 'Die beste KI-Tastatur für iPhone',
-      subhead: 'Grammatik prüfen, Tonfall ändern, übersetzen und antworten — direkt aus deiner Tastatur in jeder App.',
+      subhead: '14 KI-Schreibwerkzeuge in deiner iPhone-Tastatur. Grammatik prüfen, Tonfall ändern, übersetzen und mit KI antworten — in WhatsApp, iMessage, Mail und jeder anderen App, ohne ChatGPT zu öffnen.',
       socialProof: 'Über 100.000 zufriedene Nutzer schreiben besser mit KI',
       rating: '4.6 im App Store',
       download: 'Im App Store laden',
@@ -212,6 +212,8 @@ export const UI: Record<Locale, UIStrings> = {
         { q: 'Funktioniert es auf meinem iPad?', a: 'Ja — KeyAI funktioniert auf iPhone und iPad mit demselben Abonnement.' },
         { q: 'Wie installiere ich KeyAI?', a: 'Aus dem App Store laden, dann Einstellungen → Allgemein → Tastatur → Tastaturen → Neue Tastatur hinzufügen → KeyAI, und Vollzugriff erlauben. Dauert 30 Sekunden.' },
         { q: 'Kann ich jederzeit kündigen?', a: 'Ja. Das Abonnement wird in deinen Apple-ID-Einstellungen verwaltet — kündige jederzeit vor Ablauf der Testphase und es wird dir nichts berechnet.' },
+        { q: 'Funktioniert es auf Android?', a: 'Noch nicht. KeyAI wurde nur für iPhone und iPad gebaut — wir nutzen iOS-spezifische APIs (Vollzugriff, System-Tastatur-Übergabe bei Passwortfeldern), um dein Tippen privat zu halten. Eine Android-Version ist für 2026 nicht geplant.' },
+        { q: 'Funktioniert es in WhatsApp?', a: 'Ja — KeyAI funktioniert in WhatsApp, iMessage, Mail, Notizen, Instagram, X, Slack, LinkedIn, Telegram und jedem anderen Textfeld auf iOS. Die KI-Tools sind in der Tastatur, nicht in einer bestimmten App.' },
       ],
     },
     finalCta: {
@@ -244,7 +246,7 @@ export const UI: Record<Locale, UIStrings> = {
     },
     hero: {
       h1: 'Le meilleur clavier IA pour iPhone',
-      subhead: "Corrigez la grammaire, changez le ton, traduisez et répondez avec l'IA — directement depuis votre clavier, dans toutes vos apps.",
+      subhead: "14 outils IA d'écriture dans le clavier de votre iPhone. Corrigez la grammaire, changez le ton, traduisez et répondez avec l'IA — dans WhatsApp, iMessage, Mail et toutes vos apps, sans ouvrir ChatGPT.",
       socialProof: 'Plus de 100 000 utilisateurs satisfaits écrivent mieux avec IA',
       rating: '4.6 sur App Store',
       download: "Télécharger sur l'App Store",
@@ -292,6 +294,8 @@ export const UI: Record<Locale, UIStrings> = {
         { q: 'Fonctionne-t-il sur mon iPad ?', a: 'Oui — KeyAI fonctionne sur iPhone et iPad avec le même abonnement.' },
         { q: 'Comment installer KeyAI ?', a: "Téléchargez depuis l'App Store, puis Réglages → Général → Clavier → Claviers → Ajouter un nouveau clavier → KeyAI, et activez Autoriser l'accès complet. Prend 30 secondes." },
         { q: "Puis-je annuler à tout moment ?", a: "Oui. L'abonnement est géré dans vos réglages Apple ID — annulez à tout moment avant la fin de l'essai et vous ne serez pas facturé." },
+        { q: "Fonctionne-t-il sur Android ?", a: "Pas encore. KeyAI est conçu uniquement pour iPhone et iPad — nous utilisons des APIs spécifiques à iOS (Accès complet, basculement vers le clavier système pour les champs de mot de passe) pour garder votre frappe privée. Aucune version Android n'est prévue en 2026." },
+        { q: "Fonctionne-t-il dans WhatsApp ?", a: "Oui — KeyAI fonctionne dans WhatsApp, iMessage, Mail, Notes, Instagram, X, Slack, LinkedIn, Telegram et tout autre champ de texte sur iOS. Les outils IA sont dans le clavier, pas dans une app spécifique." },
       ],
     },
     finalCta: {
@@ -324,7 +328,7 @@ export const UI: Record<Locale, UIStrings> = {
     },
     hero: {
       h1: 'El mejor teclado IA para iPhone',
-      subhead: 'Corrige gramática, cambia el tono, traduce y responde con IA — directamente desde tu teclado, en cualquier app.',
+      subhead: '14 herramientas de escritura IA dentro del teclado de tu iPhone. Corrige gramática, cambia el tono, traduce y responde con IA — en WhatsApp, iMessage, Mail y todas tus apps, sin abrir ChatGPT.',
       socialProof: 'Más de 100.000 usuarios satisfechos escriben mejor con IA',
       rating: '4.6 en App Store',
       download: 'Descargar en App Store',
@@ -372,6 +376,8 @@ export const UI: Record<Locale, UIStrings> = {
         { q: '¿Funciona en mi iPad?', a: 'Sí — KeyAI funciona en iPhone y iPad con la misma suscripción.' },
         { q: '¿Cómo instalo KeyAI?', a: 'Descárgalo de App Store, luego Ajustes → General → Teclado → Teclados → Añadir nuevo teclado → KeyAI, y activa Permitir acceso completo. Tarda 30 segundos.' },
         { q: '¿Puedo cancelar cuando quiera?', a: 'Sí. La suscripción se gestiona en los ajustes de Apple ID — cancela antes de que termine la prueba y no se te cobrará.' },
+        { q: '¿Funciona en Android?', a: 'Todavía no. KeyAI está hecho solo para iPhone y iPad — usamos APIs específicas de iOS (acceso completo, paso al teclado del sistema en campos de contraseña) para mantener tu escritura privada. No hay versión Android prevista en 2026.' },
+        { q: '¿Funciona en WhatsApp?', a: 'Sí — KeyAI funciona en WhatsApp, iMessage, Mail, Notas, Instagram, X, Slack, LinkedIn, Telegram y cualquier otro campo de texto en iOS. Las herramientas IA están en el teclado, no en una app específica.' },
       ],
     },
     finalCta: {
@@ -404,7 +410,7 @@ export const UI: Record<Locale, UIStrings> = {
     },
     hero: {
       h1: 'O melhor teclado IA para iPhone',
-      subhead: 'Corrige gramática, muda o tom, traduz e responde com IA — diretamente do teu teclado, em qualquer app.',
+      subhead: '14 ferramentas IA de escrita dentro do teclado do teu iPhone. Corrige gramática, muda o tom, traduz e responde com IA — no WhatsApp, iMessage, Mail e todas as tuas apps, sem abrir o ChatGPT.',
       socialProof: 'Mais de 100.000 utilizadores satisfeitos escrevem melhor com IA',
       rating: '4.6 na App Store',
       download: 'Descarregar na App Store',
@@ -452,6 +458,8 @@ export const UI: Record<Locale, UIStrings> = {
         { q: 'Funciona no meu iPad?', a: 'Sim — o KeyAI funciona em iPhone e iPad com a mesma subscrição.' },
         { q: 'Como instalo o KeyAI?', a: 'Descarrega da App Store, depois Ajustes → Geral → Teclado → Teclados → Adicionar Novo Teclado → KeyAI, e ativa Permitir Acesso Total. Demora 30 segundos.' },
         { q: 'Posso cancelar quando quiser?', a: 'Sim. A subscrição é gerida nas tuas definições Apple ID — cancela antes do fim do período gratuito e não serás cobrado.' },
+        { q: 'Funciona em Android?', a: 'Ainda não. O KeyAI foi feito apenas para iPhone e iPad — usamos APIs específicas do iOS (acesso total, passagem para o teclado do sistema em campos de palavra-passe) para manter a tua escrita privada. Não há versão Android prevista para 2026.' },
+        { q: 'Funciona no WhatsApp?', a: 'Sim — o KeyAI funciona no WhatsApp, iMessage, Mail, Notas, Instagram, X, Slack, LinkedIn, Telegram e em qualquer outro campo de texto no iOS. As ferramentas IA estão no teclado, não numa app específica.' },
       ],
     },
     finalCta: {
@@ -484,7 +492,7 @@ export const UI: Record<Locale, UIStrings> = {
     },
     hero: {
       h1: 'O melhor teclado IA para iPhone',
-      subhead: 'Corrija gramática, mude o tom, traduza e responda com IA — direto do seu teclado, em qualquer app.',
+      subhead: '14 ferramentas IA de escrita dentro do teclado do seu iPhone. Corrija gramática, mude o tom, traduza e responda com IA — no WhatsApp, iMessage, Mail e em todos os seus apps, sem abrir o ChatGPT.',
       socialProof: 'Mais de 100.000 usuários satisfeitos escrevem melhor com IA',
       rating: '4.6 na App Store',
       download: 'Baixar na App Store',
@@ -532,6 +540,8 @@ export const UI: Record<Locale, UIStrings> = {
         { q: 'Funciona no meu iPad?', a: 'Sim — o KeyAI funciona em iPhone e iPad com a mesma assinatura.' },
         { q: 'Como instalo o KeyAI?', a: 'Baixe na App Store, depois Ajustes → Geral → Teclado → Teclados → Adicionar Novo Teclado → KeyAI, e ative Permitir Acesso Total. Leva 30 segundos.' },
         { q: 'Posso cancelar a qualquer momento?', a: 'Sim. A assinatura é gerenciada nas suas configurações Apple ID — cancele antes do fim do teste e nada será cobrado.' },
+        { q: 'Funciona no Android?', a: 'Ainda não. O KeyAI foi feito apenas para iPhone e iPad — usamos APIs específicas do iOS (acesso total, passagem para o teclado do sistema em campos de senha) para manter sua digitação privada. Não há versão Android prevista para 2026.' },
+        { q: 'Funciona no WhatsApp?', a: 'Sim — o KeyAI funciona no WhatsApp, iMessage, Mail, Notas, Instagram, X, Slack, LinkedIn, Telegram e em qualquer outro campo de texto no iOS. As ferramentas IA estão no teclado, não em um app específico.' },
       ],
     },
     finalCta: {

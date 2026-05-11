@@ -15,7 +15,7 @@ const year = new Date().getFullYear();
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
       <div>
         <a href={localizedPath(locale, '/')} class="flex items-center gap-2 font-display font-semibold text-lg mb-3">
-          <img src="/icon-100.png" alt="KeyAI" width="32" height="32" class="h-8 w-8 rounded-[8px]" />
+          <img src="/icon-100.png?v=2" alt="KeyAI" width="32" height="32" class="h-8 w-8 rounded-[8px]" />
           KeyAI
         </a>
         <p class="text-sm text-text-muted leading-relaxed">{ui.footer.tagline}</p>
@@ -38,6 +38,8 @@ const year = new Date().getFullYear();
           <li><a href={localizedPath(locale, '/vs/apple-intelligence')} class="text-text-muted hover:text-text transition-colors">vs Apple Intelligence</a></li>
           <li><a href={localizedPath(locale, '/vs/keybot')} class="text-text-muted hover:text-text transition-colors">vs Keybot</a></li>
           <li><a href={localizedPath(locale, '/vs/typeai')} class="text-text-muted hover:text-text transition-colors">vs TypeAI</a></li>
+          <li><a href={localizedPath(locale, '/vs/clevertype')} class="text-text-muted hover:text-text transition-colors">vs CleverType</a></li>
+          <li><a href={localizedPath(locale, '/vs/ghostwriter')} class="text-text-muted hover:text-text transition-colors">vs Ghostwriter</a></li>
         </ul>
       </div>
 

@@ -14,7 +14,7 @@ export type CompetitorContent = {
   ctaHeadline: string;
 };
 
-export const COMPETITORS = ['grammarly', 'chatgpt-keyboard', 'apple-intelligence', 'keybot', 'typeai'] as const;
+export const COMPETITORS = ['grammarly', 'chatgpt-keyboard', 'apple-intelligence', 'keybot', 'typeai', 'clevertype', 'ghostwriter'] as const;
 export type CompetitorSlug = (typeof COMPETITORS)[number];
 
 const COMPETITOR_DISPLAY_NAME: Record<CompetitorSlug, string> = {
@@ -23,6 +23,8 @@ const COMPETITOR_DISPLAY_NAME: Record<CompetitorSlug, string> = {
   'apple-intelligence': 'Apple Intelligence Writing Tools',
   keybot: 'Keybot',
   typeai: 'TypeAI',
+  clevertype: 'CleverType',
+  ghostwriter: 'Ghostwriter AI Keyboard',
 };
 
 const FEATURE_LABELS: Record<Locale, {
@@ -234,6 +236,34 @@ function makeRows(locale: Locale, slug: CompetitorSlug): CompetitorRow[] {
       ['$4.99/wk · $39.99/yr', '$5.99/wk · $39.99/yr'],
       ['3 days', '3 days'],
     ],
+    clevertype: [
+      [true, true],
+      ['10+', '~7'],
+      [true, true],
+      ['55+', '30+'],
+      [true, true],
+      [true, true],
+      [true, false],
+      [true, false],
+      [true, false],
+      ['60+', '20+'],
+      ['$4.99/wk · $39.99/yr · $59.99 lifetime', '$5.99/wk · $39.99/yr'],
+      ['3 days', '3 days'],
+    ],
+    ghostwriter: [
+      [true, true],
+      ['10+', '~5'],
+      [true, true],
+      ['55+', 'English-focused'],
+      [true, true],
+      [true, true],
+      [true, false],
+      [true, false],
+      [true, false],
+      ['60+', '15+'],
+      ['$4.99/wk · $39.99/yr', '$3.99/wk · $29.99/yr'],
+      ['3 days', '7 days'],
+    ],
   };
 
   const rowLabels = [
@@ -265,6 +295,8 @@ const VERDICTS: Record<Locale, Record<CompetitorSlug, string>> = {
     'apple-intelligence': "Apple Intelligence is genuinely good for native rewriting on iPhone 15 Pro and newer. On older devices, you don't get it at all. KeyAI runs on every iPhone running iOS 15 and up, in 60+ languages, with more granular control over tone and translation.",
     keybot: "Keybot and KeyAI cover similar ground. KeyAI ships more total tools, supports more keyboard layouts, and runs a faster price plan with a longer free trial. If you've outgrown Keybot, KeyAI is the natural step up.",
     typeai: "TypeAI is a solid AI keyboard. KeyAI ships more languages, more tools (10+ vs ~6), and the same yearly price with a 3-day trial. Try both — KeyAI's tone changer alone is worth the switch.",
+    clevertype: "CleverType is one of the most direct competitors — both are full-featured AI keyboards. KeyAI ships 14 tools vs CleverType's ~7, supports 60+ keyboard layouts vs 20+, and the Lifetime plan ($59.99) means you pay once and own it forever — CleverType keeps you on a subscription. Both have a 3-day trial; the question is which feature set you actually use.",
+    ghostwriter: "Ghostwriter is built around AI-generated text and replies — that's where it shines. KeyAI does that plus translation in 55+ languages (Ghostwriter is English-focused), more languages, and integrates grammar + tone + paraphrase + ask AI into the same keyboard. Ghostwriter has a longer 7-day trial; KeyAI offers a Lifetime option so you can stop renewing.",
   },
   de: {
     grammarly: 'Grammarly ist exzellent für eine Aufgabe — Grammatik. KeyAI bietet Grammatik plus 9 weitere KI-Tools, alle aus deiner Tastatur in 55+ Sprachen. Wenn du nur Tippfehler korrigierst, reicht Grammarly. Wenn du den vollen KI-Assistenten in jeder App willst, ist KeyAI das Upgrade.',
@@ -272,6 +304,8 @@ const VERDICTS: Record<Locale, Record<CompetitorSlug, string>> = {
     'apple-intelligence': 'Apple Intelligence ist wirklich gut für natives Umschreiben auf iPhone 15 Pro und neuer. Auf älteren Geräten bekommst du es gar nicht. KeyAI läuft auf jedem iPhone ab iOS 15 in 60+ Sprachen mit feinerer Kontrolle über Tonfall und Übersetzung.',
     keybot: 'Keybot und KeyAI decken ähnliches Gebiet ab. KeyAI bietet mehr Tools, mehr Tastaturlayouts und einen günstigeren Preis mit längerer kostenloser Testphase. Wenn du über Keybot hinausgewachsen bist, ist KeyAI der natürliche Schritt.',
     typeai: 'TypeAI ist eine solide KI-Tastatur. KeyAI bietet mehr Sprachen, mehr Tools (10+ vs ~6) und denselben Jahrespreis mit 3-Tage-Testphase. Probiere beides — schon der Tonfall-Wechsler von KeyAI ist den Wechsel wert.',
+    clevertype: 'CleverType ist einer der direktesten Konkurrenten — beide sind voll ausgestattete KI-Tastaturen. KeyAI bietet 14 Tools statt ~7, unterstützt 60+ Tastaturlayouts statt 20+, und der Lifetime-Plan (59,99 €) bedeutet einmal zahlen und für immer behalten — CleverType bleibt ein Abo. Beide haben 3 Tage kostenlos; die Frage ist, welches Feature-Set du wirklich nutzt.',
+    ghostwriter: 'Ghostwriter ist auf KI-generierten Text und Antworten ausgerichtet — da glänzt es. KeyAI kann das plus Übersetzung in 55+ Sprachen (Ghostwriter ist Englisch-fokussiert), mehr Sprachen und integriert Grammatik, Tonfall, Paraphrase und KI-Fragen in dieselbe Tastatur. Ghostwriter hat 7 Tage Testphase; KeyAI bietet Lifetime, damit du das Abo loswirst.',
   },
   fr: {
     grammarly: 'Grammarly excelle dans une tâche — la grammaire. KeyAI fait la grammaire plus 9 autres outils IA, tous depuis votre clavier, en 55+ langues. Si vous ne corrigez que des fautes, Grammarly suffit. Si vous voulez l\'assistant IA complet dans chaque app, KeyAI est la mise à niveau.',
@@ -279,6 +313,8 @@ const VERDICTS: Record<Locale, Record<CompetitorSlug, string>> = {
     'apple-intelligence': 'Apple Intelligence est vraiment bien pour la réécriture native sur iPhone 15 Pro et plus récent. Sur les appareils plus anciens, vous ne l\'avez pas du tout. KeyAI fonctionne sur tous les iPhone iOS 15+, en 60+ langues, avec un contrôle plus fin du ton et de la traduction.',
     keybot: 'Keybot et KeyAI couvrent des terrains similaires. KeyAI offre plus d\'outils au total, plus de dispositions de clavier, et un prix plus avantageux avec un essai gratuit plus long. Si vous avez dépassé Keybot, KeyAI est l\'évolution naturelle.',
     typeai: 'TypeAI est un clavier IA solide. KeyAI offre plus de langues, plus d\'outils (10+ vs ~6) et le même prix annuel avec un essai de 3 jours. Essayez les deux — le changeur de ton de KeyAI vaut à lui seul le changement.',
+    clevertype: "CleverType est l'un des concurrents les plus directs — les deux sont des claviers IA complets. KeyAI propose 14 outils contre ~7, supporte 60+ dispositions de clavier contre 20+, et le plan à vie (59,99 €) signifie un paiement unique et c'est à vous — CleverType reste un abonnement. Les deux ont un essai 3 jours ; la question est de savoir quel ensemble de fonctionnalités vous utilisez vraiment.",
+    ghostwriter: "Ghostwriter est axé sur le texte généré par IA et les réponses — c'est là qu'il brille. KeyAI fait cela plus la traduction en 55+ langues (Ghostwriter est centré sur l'anglais), plus de langues, et intègre grammaire, ton, paraphrase et demander à l'IA dans le même clavier. Ghostwriter offre 7 jours d'essai ; KeyAI propose une option à vie pour arrêter de renouveler.",
   },
   es: {
     grammarly: 'Grammarly es excelente en una tarea — gramática. KeyAI hace gramática más 9 herramientas IA adicionales, todo desde tu teclado en 55+ idiomas. Si solo corriges errores tipográficos, Grammarly basta. Si quieres el asistente IA completo en cada app, KeyAI es la mejora.',
@@ -286,6 +322,8 @@ const VERDICTS: Record<Locale, Record<CompetitorSlug, string>> = {
     'apple-intelligence': 'Apple Intelligence es genuinamente bueno para reescritura nativa en iPhone 15 Pro y posteriores. En dispositivos más antiguos, no lo tienes en absoluto. KeyAI funciona en todos los iPhone con iOS 15+, en 60+ idiomas, con control más granular sobre tono y traducción.',
     keybot: 'Keybot y KeyAI cubren terrenos similares. KeyAI incluye más herramientas en total, soporta más distribuciones de teclado y tiene un precio más rápido con prueba gratuita más larga. Si has superado Keybot, KeyAI es el paso natural.',
     typeai: 'TypeAI es un teclado IA sólido. KeyAI incluye más idiomas, más herramientas (10+ vs ~6) y el mismo precio anual con prueba de 3 días. Prueba ambos — el cambiador de tono de KeyAI por sí solo merece el cambio.',
+    clevertype: 'CleverType es uno de los competidores más directos — ambos son teclados IA completos. KeyAI ofrece 14 herramientas frente a ~7, soporta 60+ distribuciones de teclado frente a 20+, y el plan de por vida (59,99 €) significa pagar una vez y es tuyo — CleverType sigue siendo suscripción. Ambos tienen prueba de 3 días; la pregunta es qué conjunto de funciones usas realmente.',
+    ghostwriter: 'Ghostwriter está centrado en texto generado por IA y respuestas — ahí brilla. KeyAI hace eso más traducción a 55+ idiomas (Ghostwriter se enfoca en inglés), más idiomas, e integra gramática, tono, parafraseo y preguntar a la IA en el mismo teclado. Ghostwriter ofrece prueba de 7 días; KeyAI ofrece opción de por vida para dejar de renovar.',
   },
   pt: {
     grammarly: 'O Grammarly é excelente numa tarefa — gramática. O KeyAI faz gramática mais 9 ferramentas IA adicionais, tudo a partir do teu teclado em 55+ idiomas. Se só corriges erros, o Grammarly chega. Se queres o assistente IA completo em cada app, o KeyAI é a evolução.',
@@ -293,6 +331,8 @@ const VERDICTS: Record<Locale, Record<CompetitorSlug, string>> = {
     'apple-intelligence': 'A Apple Intelligence é genuinamente boa para reescrita nativa em iPhone 15 Pro e posterior. Em dispositivos mais antigos, não a tens de todo. O KeyAI funciona em todos os iPhone com iOS 15+, em 60+ idiomas, com controlo mais granular sobre tom e tradução.',
     keybot: 'O Keybot e o KeyAI cobrem terreno semelhante. O KeyAI inclui mais ferramentas no total, suporta mais disposições de teclado e tem um preço melhor com período gratuito mais longo. Se superaste o Keybot, o KeyAI é o passo natural.',
     typeai: 'O TypeAI é um teclado IA sólido. O KeyAI inclui mais idiomas, mais ferramentas (10+ vs ~6) e o mesmo preço anual com 3 dias grátis. Experimenta ambos — só o trocador de tom do KeyAI já vale a mudança.',
+    clevertype: 'O CleverType é um dos concorrentes mais diretos — ambos são teclados IA completos. O KeyAI oferece 14 ferramentas contra ~7, suporta 60+ disposições de teclado contra 20+, e o plano vitalício (59,99 €) significa pagar uma vez e é teu — o CleverType continua a ser subscrição. Ambos têm 3 dias grátis; a questão é que conjunto de funcionalidades usas realmente.',
+    ghostwriter: 'O Ghostwriter foca em texto gerado por IA e respostas — é aí que brilha. O KeyAI faz isso mais tradução em 55+ idiomas (o Ghostwriter é focado em inglês), mais idiomas, e integra gramática, tom, paráfrase e perguntar à IA no mesmo teclado. O Ghostwriter oferece 7 dias grátis; o KeyAI oferece opção vitalícia para deixar de renovar.',
   },
   'pt-br': {
     grammarly: 'O Grammarly é excelente em uma tarefa — gramática. O KeyAI faz gramática mais 9 ferramentas IA adicionais, tudo direto do seu teclado em 55+ idiomas. Se você só corrige erros, o Grammarly basta. Se quer o assistente IA completo em cada app, o KeyAI é o upgrade.',
@@ -300,6 +340,8 @@ const VERDICTS: Record<Locale, Record<CompetitorSlug, string>> = {
     'apple-intelligence': 'A Apple Intelligence é genuinamente boa para reescrita nativa no iPhone 15 Pro e mais novos. Em dispositivos mais antigos, você não tem ela de jeito nenhum. O KeyAI funciona em todo iPhone com iOS 15+, em 60+ idiomas, com controle mais granular sobre tom e tradução.',
     keybot: 'O Keybot e o KeyAI cobrem terreno parecido. O KeyAI inclui mais ferramentas no total, suporta mais layouts de teclado e tem um preço melhor com teste grátis mais longo. Se você passou do Keybot, o KeyAI é o passo natural.',
     typeai: 'O TypeAI é um teclado IA sólido. O KeyAI inclui mais idiomas, mais ferramentas (10+ vs ~6) e o mesmo preço anual com 3 dias grátis. Experimente os dois — só o mudador de tom do KeyAI já vale a troca.',
+    clevertype: 'O CleverType é um dos concorrentes mais diretos — ambos são teclados IA completos. O KeyAI oferece 14 ferramentas contra ~7, suporta 60+ layouts de teclado contra 20+, e o plano vitalício (R$ 299,90) significa pagar uma vez e é seu — o CleverType continua sendo assinatura. Os dois têm 3 dias grátis; a questão é qual conjunto de recursos você realmente usa.',
+    ghostwriter: 'O Ghostwriter foca em texto gerado por IA e respostas — é aí que brilha. O KeyAI faz isso mais tradução em 55+ idiomas (o Ghostwriter é focado em inglês), mais idiomas, e integra gramática, tom, paráfrase e perguntar à IA no mesmo teclado. O Ghostwriter oferece 7 dias grátis; o KeyAI oferece opção vitalícia para parar de renovar.',
   },
 };
 
