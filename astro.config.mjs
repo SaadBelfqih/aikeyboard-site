@@ -7,7 +7,7 @@ const LOCALES = ['en', 'de', 'fr', 'es', 'pt', 'pt-br'];
 
 export default defineConfig({
   site: 'https://bestaikeyboard.com',
-  trailingSlash: 'never',
+  trailingSlash: 'always',
   build: {
     format: 'directory',
   },
