@@ -1,22 +1,28 @@
 ---
 import type { Locale } from '~/i18n/locales';
+import { LOCALE_META } from '~/i18n/locales';
 import { t } from '~/i18n/ui';
-import AppStoreBadge from './AppStoreBadge.astro';
 
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const ui = t(locale);
 
-// Display prices per locale (display only - real billing via App Store)
-const prices: Record<Locale, { weekly: string; yearly: string; lifetime: string }> = {
-  en:      { weekly: '$4.99',    yearly: '$39.99',   lifetime: '$59.99'   },
-  de:      { weekly: '4,99 €',   yearly: '39,99 €',  lifetime: '59,99 €'  },
-  fr:      { weekly: '4,99 €',   yearly: '39,99 €',  lifetime: '59,99 €'  },
-  es:      { weekly: '4,99 €',   yearly: '39,99 €',  lifetime: '59,99 €'  },
-  pt:      { weekly: '4,99 €',   yearly: '39,99 €',  lifetime: '59,99 €'  },
-  'pt-br': { weekly: 'R$ 24,90', yearly: 'R$ 199,90', lifetime: 'R$ 299,90' },
+const cc = LOCALE_META[locale].appStoreCountry;
+const trialHref = `https://apps.apple.com/${cc}/app/id6466343783?pt=&ct=web-${locale}&mt=8`;
+
+const blurb: Record<Locale, { weekly: string; yearly: string; lifetime: string }> = {
+  en:      { weekly: 'Try every AI tool free for 3 days. Cancel anytime.',                             yearly: 'Lock in the lowest cost per month — Save 84% vs Weekly.', lifetime: 'One payment. Every AI tool, forever, on every iPhone you upgrade to.' },
+  de:      { weekly: 'Probiere alle KI-Tools 3 Tage kostenlos. Jederzeit kündbar.',                    yearly: 'Sichere dir den niedrigsten Preis pro Monat — 84% Ersparnis.', lifetime: 'Eine Zahlung. Alle KI-Tools, für immer, auf jedem iPhone.' },
+  fr:      { weekly: "Essayez tous les outils IA gratuitement pendant 3 jours. Annulez à tout moment.", yearly: 'Verrouillez le prix mensuel le plus bas — 84% d\'économie.', lifetime: 'Un seul paiement. Tous les outils IA, à vie, sur chaque iPhone.' },
+  es:      { weekly: 'Prueba todas las herramientas IA gratis durante 3 días. Cancela cuando quieras.', yearly: 'Bloquea el precio mensual más bajo — Ahorra 84%.', lifetime: 'Un solo pago. Todas las herramientas IA, para siempre, en cualquier iPhone.' },
+  pt:      { weekly: 'Experimenta todas as ferramentas IA grátis durante 3 dias. Cancela quando quiseres.', yearly: 'Garante o preço mensal mais baixo — Poupa 84%.', lifetime: 'Um pagamento. Todas as ferramentas IA, para sempre, em qualquer iPhone.' },
+  'pt-br': { weekly: 'Teste todas as ferramentas IA grátis por 3 dias. Cancele quando quiser.',         yearly: 'Garanta o preço mensal mais baixo — Economize 84%.', lifetime: 'Um pagamento. Todas as ferramentas IA, para sempre, em qualquer iPhone.' },
 };
-const p = prices[locale];
+const b = blurb[locale];
+
+const trialBadge: Record<Locale, string> = {
+  en: '3-day Free Trial', de: '3 Tage kostenlos', fr: 'Essai 3 jours gratuit', es: '3 días gratis', pt: '3 dias grátis', 'pt-br': '3 dias grátis',
+};
 ---
 
 <section id="pricing" class="py-20 sm:py-28 border-t border-border">
@@ -31,46 +37,46 @@ const p = prices[locale];
       </div>
     </div>
 
-    <div class="grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
-      <!-- Weekly -->
-      <div class="glass rounded-3xl p-6 sm:p-7 relative">
-        <div class="text-sm text-text-muted">{ui.pricing.weekly}</div>
-        <div class="mt-3 flex items-baseline gap-1">
-          <span class="text-3xl sm:text-4xl font-bold">{p.weekly}</span>
-          <span class="text-xs text-text-muted">{ui.pricing.perWeek}</span>
+    <div class="grid sm:grid-cols-3 gap-4 max-w-5xl mx-auto items-stretch">
+      <!-- Weekly (trial) — the only card with a CTA -->
+      <div class="relative rounded-3xl p-7 bg-gradient-to-br from-accent/25 to-accent/5 border border-accent/40 shadow-2xl shadow-accent/20 flex flex-col">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-accent text-white text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">
+          {trialBadge[locale]}
         </div>
-        <p class="mt-3 text-sm text-text-muted">{ui.pricing.trial}</p>
+        <div class="text-sm text-accent-soft font-medium">{ui.pricing.weekly}</div>
+        <p class="mt-3 text-sm text-text-muted leading-relaxed flex-1">{b.weekly}</p>
+        <a
+          href={trialHref}
+          target="_blank"
+          rel="noopener"
+          class="mt-6 inline-flex items-center justify-center gap-2 rounded-2xl bg-white text-black font-semibold px-5 py-3 text-sm transition-all hover:scale-[1.03] hover:shadow-2xl hover:shadow-white/20"
+        >
+          <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true">
+            <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+          </svg>
+          <span>{ui.pricing.cta}</span>
+        </a>
       </div>
 
-      <!-- Yearly (recommended) -->
-      <div class="relative rounded-3xl p-6 sm:p-7 bg-gradient-to-br from-accent/25 to-accent/5 border border-accent/40 shadow-2xl shadow-accent/20">
-        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-accent text-white text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">
+      <!-- Yearly — no CTA, just describe the plan -->
+      <div class="rounded-3xl p-7 glass flex flex-col">
+        <div class="text-sm text-text-muted">{ui.pricing.yearly}</div>
+        <div class="mt-2 inline-flex w-fit items-center gap-1 rounded-full bg-accent/15 text-accent-soft px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide">
           {ui.pricing.save}
         </div>
-        <div class="text-sm text-accent-soft font-medium">{ui.pricing.yearly}</div>
-        <div class="mt-3 flex items-baseline gap-1">
-          <span class="text-3xl sm:text-4xl font-bold">{p.yearly}</span>
-          <span class="text-xs text-text-muted">{ui.pricing.perYear}</span>
-        </div>
-        <p class="mt-3 text-sm text-text-muted">{ui.pricing.trial}</p>
+        <p class="mt-4 text-sm text-text-muted leading-relaxed flex-1">{b.yearly}</p>
+        <p class="mt-6 text-xs text-text-muted/70">{ui.pricing.cancelAnytime}</p>
       </div>
 
-      <!-- Lifetime -->
-      <div class="relative rounded-3xl p-6 sm:p-7 glass border-amber-300/30" style="border-color: rgba(252, 211, 77, 0.3);">
-        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-amber-300 text-amber-950 text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">
+      <!-- Lifetime — no CTA -->
+      <div class="rounded-3xl p-7 glass border-amber-300/30 flex flex-col" style="border-color: rgba(252, 211, 77, 0.3);">
+        <div class="text-sm text-amber-200 font-medium">{ui.pricing.lifetime}</div>
+        <div class="mt-2 inline-flex w-fit items-center gap-1 rounded-full bg-amber-300/15 text-amber-300 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide">
           {ui.pricing.bestValue}
         </div>
-        <div class="text-sm text-amber-200 font-medium">{ui.pricing.lifetime}</div>
-        <div class="mt-3 flex items-baseline gap-1">
-          <span class="text-3xl sm:text-4xl font-bold">{p.lifetime}</span>
-        </div>
-        <p class="mt-3 text-sm text-text-muted">{ui.pricing.paidOnce}</p>
+        <p class="mt-4 text-sm text-text-muted leading-relaxed flex-1">{b.lifetime}</p>
+        <p class="mt-6 text-xs text-text-muted/70">{ui.pricing.paidOnce}</p>
       </div>
-    </div>
-
-    <div class="mt-8 flex flex-col items-center gap-3">
-      <AppStoreBadge locale={locale} size="lg" label={ui.pricing.cta} />
-      <p class="text-xs text-text-muted">{ui.pricing.cancelAnytime}</p>
     </div>
   </div>
 </section>

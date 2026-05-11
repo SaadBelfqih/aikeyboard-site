@@ -88,7 +88,7 @@ export const UI: Record<Locale, UIStrings> = {
       download: 'Download on the App Store',
     },
     features: {
-      sectionEyebrow: '10 AI tools, one keyboard',
+      sectionEyebrow: '14 AI tools, one keyboard',
       sectionTitle: 'Your complete AI writing toolkit',
       sectionSubtitle: 'Works in Messages, Mail, WhatsApp, Notes, X, Instagram — every app you type in.',
     },
@@ -137,7 +137,7 @@ export const UI: Record<Locale, UIStrings> = {
       subtitle: 'Free for 3 days. No credit card to start the trial.',
     },
     footer: {
-      tagline: 'The best AI keyboard for iPhone. 10 AI writing tools in one keyboard.',
+      tagline: 'The best AI keyboard for iPhone. 14 AI writing tools in one keyboard.',
       productH: 'Product',
       compareH: 'Compare',
       legalH: 'Legal',
@@ -168,7 +168,7 @@ export const UI: Record<Locale, UIStrings> = {
       download: 'Im App Store laden',
     },
     features: {
-      sectionEyebrow: '10 KI-Tools, eine Tastatur',
+      sectionEyebrow: '14 KI-Tools, eine Tastatur',
       sectionTitle: 'Dein komplettes KI-Schreibset',
       sectionSubtitle: 'Funktioniert in Nachrichten, Mail, WhatsApp, Notizen, X, Instagram — überall, wo du tippst.',
     },
@@ -217,7 +217,7 @@ export const UI: Record<Locale, UIStrings> = {
       subtitle: '3 Tage kostenlos. Keine Kreditkarte für die Testphase nötig.',
     },
     footer: {
-      tagline: 'Die beste KI-Tastatur für iPhone. 10 KI-Schreibwerkzeuge in einer Tastatur.',
+      tagline: 'Die beste KI-Tastatur für iPhone. 14 KI-Schreibwerkzeuge in einer Tastatur.',
       productH: 'Produkt',
       compareH: 'Vergleich',
       legalH: 'Rechtliches',
@@ -248,7 +248,7 @@ export const UI: Record<Locale, UIStrings> = {
       download: "Télécharger sur l'App Store",
     },
     features: {
-      sectionEyebrow: '10 outils IA, un seul clavier',
+      sectionEyebrow: '14 outils IA, un seul clavier',
       sectionTitle: "Votre boîte à outils d'écriture IA complète",
       sectionSubtitle: 'Fonctionne dans Messages, Mail, WhatsApp, Notes, X, Instagram — partout où vous tapez.',
     },
@@ -297,7 +297,7 @@ export const UI: Record<Locale, UIStrings> = {
       subtitle: "Gratuit pendant 3 jours. Pas de carte bancaire pour commencer l'essai.",
     },
     footer: {
-      tagline: "Le meilleur clavier IA pour iPhone. 10 outils d'écriture IA dans un clavier.",
+      tagline: "Le meilleur clavier IA pour iPhone. 14 outils d'écriture IA dans un clavier.",
       productH: 'Produit',
       compareH: 'Comparer',
       legalH: 'Légal',
@@ -328,7 +328,7 @@ export const UI: Record<Locale, UIStrings> = {
       download: 'Descargar en App Store',
     },
     features: {
-      sectionEyebrow: '10 herramientas IA, un teclado',
+      sectionEyebrow: '14 herramientas IA, un teclado',
       sectionTitle: 'Tu kit completo de escritura con IA',
       sectionSubtitle: 'Funciona en Mensajes, Mail, WhatsApp, Notas, X, Instagram — en cada app donde escribas.',
     },
@@ -377,7 +377,7 @@ export const UI: Record<Locale, UIStrings> = {
       subtitle: 'Gratis 3 días. Sin tarjeta para iniciar la prueba.',
     },
     footer: {
-      tagline: 'El mejor teclado IA para iPhone. 10 herramientas IA en un solo teclado.',
+      tagline: 'El mejor teclado IA para iPhone. 14 herramientas IA en un solo teclado.',
       productH: 'Producto',
       compareH: 'Comparar',
       legalH: 'Legal',
@@ -408,7 +408,7 @@ export const UI: Record<Locale, UIStrings> = {
       download: 'Descarregar na App Store',
     },
     features: {
-      sectionEyebrow: '10 ferramentas IA, um teclado',
+      sectionEyebrow: '14 ferramentas IA, um teclado',
       sectionTitle: 'O teu kit completo de escrita com IA',
       sectionSubtitle: 'Funciona em Mensagens, Mail, WhatsApp, Notas, X, Instagram — em cada app onde escreves.',
     },
@@ -457,7 +457,7 @@ export const UI: Record<Locale, UIStrings> = {
       subtitle: 'Grátis durante 3 dias. Sem cartão para começar o período gratuito.',
     },
     footer: {
-      tagline: 'O melhor teclado IA para iPhone. 10 ferramentas IA num só teclado.',
+      tagline: 'O melhor teclado IA para iPhone. 14 ferramentas IA num só teclado.',
       productH: 'Produto',
       compareH: 'Comparar',
       legalH: 'Legal',
@@ -488,7 +488,7 @@ export const UI: Record<Locale, UIStrings> = {
       download: 'Baixar na App Store',
     },
     features: {
-      sectionEyebrow: '10 ferramentas IA, um teclado',
+      sectionEyebrow: '14 ferramentas IA, um teclado',
       sectionTitle: 'Seu kit completo de escrita com IA',
       sectionSubtitle: 'Funciona em Mensagens, Mail, WhatsApp, Notas, X, Instagram — em cada app onde você digita.',
     },
@@ -537,7 +537,7 @@ export const UI: Record<Locale, UIStrings> = {
       subtitle: 'Grátis por 3 dias. Sem cartão para começar o teste.',
     },
     footer: {
-      tagline: 'O melhor teclado IA para iPhone. 10 ferramentas IA em um só teclado.',
+      tagline: 'O melhor teclado IA para iPhone. 14 ferramentas IA em um só teclado.',
       productH: 'Produto',
       compareH: 'Comparar',
       legalH: 'Legal',
