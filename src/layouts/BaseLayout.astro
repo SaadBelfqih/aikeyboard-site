@@ -110,6 +110,28 @@ const allSchemas = [...siteSchema, ...pageSchemas];
     {allSchemas.map((s) => (
       <script is:inline type="application/ld+json" set:html={JSON.stringify(s)} />
     ))}
+
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-K0L6Z4JFDD"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-K0L6Z4JFDD');
+
+      // Track App Store badge clicks as a conversion proxy for installs.
+      // App Store Connect attributes the install via the ct=web-<locale>
+      // referral param already baked into every badge URL.
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest && e.target.closest('a[href*="apps.apple.com"]');
+        if (!a) return;
+        gtag('event', 'app_store_click', {
+          event_category: 'outbound',
+          event_label: a.href,
+          locale: document.documentElement.lang || 'en',
+        });
+      });
+    </script>
   </head>
   <body>
     <slot />
