@@ -30,8 +30,9 @@ const mobileAppSchema = {
   url: SITE,
   inLanguage: meta.hreflang,
   offers: [
-    { '@type': 'Offer', price: '4.99', priceCurrency: locale === 'pt-br' ? 'BRL' : (locale === 'en' ? 'USD' : 'EUR'), name: 'Weekly subscription' },
+    { '@type': 'Offer', price: '4.99',  priceCurrency: locale === 'pt-br' ? 'BRL' : (locale === 'en' ? 'USD' : 'EUR'), name: 'Weekly subscription' },
     { '@type': 'Offer', price: '39.99', priceCurrency: locale === 'pt-br' ? 'BRL' : (locale === 'en' ? 'USD' : 'EUR'), name: 'Yearly subscription' },
+    { '@type': 'Offer', price: '59.99', priceCurrency: locale === 'pt-br' ? 'BRL' : (locale === 'en' ? 'USD' : 'EUR'), name: 'Lifetime' },
   ],
   aggregateRating: {
     '@type': 'AggregateRating',

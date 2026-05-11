@@ -35,12 +35,15 @@ export type UIStrings = {
     trustLine: string;
     weekly: string;
     yearly: string;
+    lifetime: string;
     perWeek: string;
     perYear: string;
+    paidOnce: string;
     trial: string;
     cta: string;
     cancelAnytime: string;
     save: string;
+    bestValue: string;
   };
   faq: {
     title: string;
@@ -103,12 +106,15 @@ export const UI: Record<Locale, UIStrings> = {
       trustLine: 'Trusted by 100,000+ users worldwide',
       weekly: 'Weekly',
       yearly: 'Yearly',
+      lifetime: 'Lifetime',
       perWeek: '/ week',
       perYear: '/ year',
+      paidOnce: 'Pay once, yours forever',
       trial: '3-day free trial · Cancel anytime',
       cta: 'Start 3-day Free Trial',
       cancelAnytime: 'Secured by the App Store. Cancel anytime.',
       save: 'Save 84%',
+      bestValue: 'Best Value',
     },
     faq: {
       title: 'Frequently asked questions',
@@ -180,12 +186,15 @@ export const UI: Record<Locale, UIStrings> = {
       trustLine: 'Vertraut von über 100.000 Nutzern weltweit',
       weekly: 'Wöchentlich',
       yearly: 'Jährlich',
+      lifetime: 'Lebenslang',
       perWeek: '/ Woche',
       perYear: '/ Jahr',
+      paidOnce: 'Einmal zahlen, für immer dein',
       trial: '3 Tage kostenlos · Jederzeit kündbar',
       cta: '3-Tage kostenlose Testphase starten',
       cancelAnytime: 'Über App Store gesichert. Jederzeit kündbar.',
       save: '84% sparen',
+      bestValue: 'Bester Wert',
     },
     faq: {
       title: 'Häufig gestellte Fragen',
@@ -257,12 +266,15 @@ export const UI: Record<Locale, UIStrings> = {
       trustLine: 'Plus de 100 000 utilisateurs nous font confiance',
       weekly: 'Hebdomadaire',
       yearly: 'Annuel',
+      lifetime: 'À vie',
       perWeek: '/ semaine',
       perYear: '/ an',
+      paidOnce: 'Payez une fois, à vous pour toujours',
       trial: '3 jours gratuits · Annulez à tout moment',
       cta: 'Commencer mon essai gratuit de 3 jours',
       cancelAnytime: 'Sécurisé par App Store. Annulez à tout moment.',
       save: 'Économisez 84%',
+      bestValue: 'Meilleure offre',
     },
     faq: {
       title: 'Questions fréquentes',
@@ -334,12 +346,15 @@ export const UI: Record<Locale, UIStrings> = {
       trustLine: 'Confianza de más de 100.000 usuarios en todo el mundo',
       weekly: 'Semanal',
       yearly: 'Anual',
+      lifetime: 'De por vida',
       perWeek: '/ semana',
       perYear: '/ año',
+      paidOnce: 'Paga una vez, tuyo para siempre',
       trial: '3 días gratis · Cancela cuando quieras',
       cta: 'Comenzar prueba gratuita de 3 días',
       cancelAnytime: 'Asegurado por App Store. Cancela cuando quieras.',
       save: 'Ahorra 84%',
+      bestValue: 'Mejor valor',
     },
     faq: {
       title: 'Preguntas frecuentes',
@@ -411,12 +426,15 @@ export const UI: Record<Locale, UIStrings> = {
       trustLine: 'Confiança de mais de 100.000 utilizadores em todo o mundo',
       weekly: 'Semanal',
       yearly: 'Anual',
+      lifetime: 'Vitalício',
       perWeek: '/ semana',
       perYear: '/ ano',
+      paidOnce: 'Paga uma vez, é teu para sempre',
       trial: '3 dias grátis · Cancela quando quiseres',
       cta: 'Começar período gratuito de 3 dias',
       cancelAnytime: 'Seguro pela App Store. Cancela quando quiseres.',
       save: 'Poupa 84%',
+      bestValue: 'Melhor valor',
     },
     faq: {
       title: 'Perguntas frequentes',
@@ -488,12 +506,15 @@ export const UI: Record<Locale, UIStrings> = {
       trustLine: 'Confiado por mais de 100.000 usuários no mundo todo',
       weekly: 'Semanal',
       yearly: 'Anual',
+      lifetime: 'Vitalício',
       perWeek: '/ semana',
       perYear: '/ ano',
+      paidOnce: 'Pague uma vez, seu para sempre',
       trial: '3 dias grátis · Cancele quando quiser',
       cta: 'Começar 3 dias grátis',
       cancelAnytime: 'Seguro pela App Store. Cancele quando quiser.',
       save: 'Economize 84%',
+      bestValue: 'Melhor valor',
     },
     faq: {
       title: 'Perguntas frequentes',

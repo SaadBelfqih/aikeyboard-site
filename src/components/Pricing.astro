@@ -8,19 +8,19 @@ const { locale } = Astro.props;
 const ui = t(locale);
 
 // Display prices per locale (display only - real billing via App Store)
-const prices: Record<Locale, { weekly: string; yearly: string }> = {
-  en:      { weekly: '$4.99',  yearly: '$39.99'  },
-  de:      { weekly: '4,99 €', yearly: '39,99 €' },
-  fr:      { weekly: '4,99 €', yearly: '39,99 €' },
-  es:      { weekly: '4,99 €', yearly: '39,99 €' },
-  pt:      { weekly: '4,99 €', yearly: '39,99 €' },
-  'pt-br': { weekly: 'R$ 24,90', yearly: 'R$ 199,90' },
+const prices: Record<Locale, { weekly: string; yearly: string; lifetime: string }> = {
+  en:      { weekly: '$4.99',    yearly: '$39.99',   lifetime: '$59.99'   },
+  de:      { weekly: '4,99 €',   yearly: '39,99 €',  lifetime: '59,99 €'  },
+  fr:      { weekly: '4,99 €',   yearly: '39,99 €',  lifetime: '59,99 €'  },
+  es:      { weekly: '4,99 €',   yearly: '39,99 €',  lifetime: '59,99 €'  },
+  pt:      { weekly: '4,99 €',   yearly: '39,99 €',  lifetime: '59,99 €'  },
+  'pt-br': { weekly: 'R$ 24,90', yearly: 'R$ 199,90', lifetime: 'R$ 299,90' },
 };
 const p = prices[locale];
 ---
 
 <section id="pricing" class="py-20 sm:py-28 border-t border-border">
-  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
       <div class="text-xs uppercase tracking-[0.2em] text-accent-soft font-medium mb-3">{ui.pricing.eyebrow}</div>
       <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl">
@@ -31,28 +31,40 @@ const p = prices[locale];
       </div>
     </div>
 
-    <div class="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+    <div class="grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
       <!-- Weekly -->
-      <div class="glass rounded-3xl p-6 sm:p-8 relative">
+      <div class="glass rounded-3xl p-6 sm:p-7 relative">
         <div class="text-sm text-text-muted">{ui.pricing.weekly}</div>
         <div class="mt-3 flex items-baseline gap-1">
-          <span class="text-4xl sm:text-5xl font-bold">{p.weekly}</span>
-          <span class="text-sm text-text-muted">{ui.pricing.perWeek}</span>
+          <span class="text-3xl sm:text-4xl font-bold">{p.weekly}</span>
+          <span class="text-xs text-text-muted">{ui.pricing.perWeek}</span>
         </div>
         <p class="mt-3 text-sm text-text-muted">{ui.pricing.trial}</p>
       </div>
 
       <!-- Yearly (recommended) -->
-      <div class="relative rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/40 shadow-2xl shadow-accent/20">
-        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-accent text-white text-xs font-bold uppercase tracking-wide">
+      <div class="relative rounded-3xl p-6 sm:p-7 bg-gradient-to-br from-accent/25 to-accent/5 border border-accent/40 shadow-2xl shadow-accent/20">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-accent text-white text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">
           {ui.pricing.save}
         </div>
         <div class="text-sm text-accent-soft font-medium">{ui.pricing.yearly}</div>
         <div class="mt-3 flex items-baseline gap-1">
-          <span class="text-4xl sm:text-5xl font-bold">{p.yearly}</span>
-          <span class="text-sm text-text-muted">{ui.pricing.perYear}</span>
+          <span class="text-3xl sm:text-4xl font-bold">{p.yearly}</span>
+          <span class="text-xs text-text-muted">{ui.pricing.perYear}</span>
         </div>
         <p class="mt-3 text-sm text-text-muted">{ui.pricing.trial}</p>
+      </div>
+
+      <!-- Lifetime -->
+      <div class="relative rounded-3xl p-6 sm:p-7 glass border-amber-300/30" style="border-color: rgba(252, 211, 77, 0.3);">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-amber-300 text-amber-950 text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">
+          {ui.pricing.bestValue}
+        </div>
+        <div class="text-sm text-amber-200 font-medium">{ui.pricing.lifetime}</div>
+        <div class="mt-3 flex items-baseline gap-1">
+          <span class="text-3xl sm:text-4xl font-bold">{p.lifetime}</span>
+        </div>
+        <p class="mt-3 text-sm text-text-muted">{ui.pricing.paidOnce}</p>
       </div>
     </div>
 

@@ -30,8 +30,15 @@ const ui = t(locale);
         <div class="mt-7 flex flex-col sm:flex-row items-center lg:items-start gap-3 sm:gap-5">
           <div class="flex items-center gap-3">
             <div class="flex -space-x-2">
-              {['from-pink-400 to-rose-500', 'from-amber-300 to-orange-500', 'from-emerald-300 to-teal-500', 'from-sky-300 to-indigo-500', 'from-purple-300 to-fuchsia-500'].map((g) => (
-                <div class:list={['h-8 w-8 rounded-full ring-2 ring-bg bg-gradient-to-br', g]}></div>
+              {[1, 2, 3, 4, 5].map((i) => (
+                <img
+                  src={`/avatars/u${i}.jpg`}
+                  alt=""
+                  loading="lazy"
+                  width="32"
+                  height="32"
+                  class="h-8 w-8 rounded-full ring-2 ring-bg object-cover"
+                />
               ))}
             </div>
             <div class="text-left">
