@@ -23,13 +23,16 @@ const cleanPath = path ?? stripLocaleFromPath(Astro.url.pathname);
       <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </button>
-  <div class="absolute right-0 top-full mt-2 hidden group-hover:block group-focus-within:block min-w-[200px] rounded-2xl glass-strong p-2 z-50">
+  <div
+    class="absolute right-0 top-full mt-2 hidden group-hover:block group-focus-within:block min-w-[220px] rounded-2xl p-2 z-50 border border-white/10 shadow-2xl shadow-black/60"
+    style="background-color: rgba(15, 15, 24, 0.96); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);"
+  >
     {LOCALES.map((loc) => (
       <a
         href={localizedPath(loc, cleanPath)}
         class:list={[
-          'flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm transition-colors hover:bg-white/8',
-          loc === locale ? 'text-text font-medium bg-white/4' : 'text-text-muted',
+          'flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm transition-colors hover:bg-white/10',
+          loc === locale ? 'text-text font-medium bg-white/5' : 'text-text-muted',
         ]}
         hreflang={LOCALE_META[loc].hreflang}
       >
