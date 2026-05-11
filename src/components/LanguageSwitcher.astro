@@ -11,21 +11,23 @@ const { locale, path } = Astro.props;
 const cleanPath = path ?? stripLocaleFromPath(Astro.url.pathname);
 ---
 
-<div class="relative group">
+<div class="lang-switcher relative" data-open="false">
   <button
     type="button"
-    class="inline-flex items-center gap-1.5 rounded-full glass px-3 py-1.5 text-xs font-medium text-text hover:bg-white/5 transition-colors"
+    class="lang-toggle inline-flex items-center gap-1.5 rounded-full glass px-3 py-1.5 text-xs font-medium text-text hover:bg-white/5 transition-colors"
     aria-haspopup="true"
+    aria-expanded="false"
   >
     <span aria-hidden="true">{LOCALE_META[locale].flag}</span>
     <span>{LOCALE_META[locale].label}</span>
-    <svg class="h-3 w-3 opacity-60" viewBox="0 0 12 12" aria-hidden="true">
+    <svg class="lang-chevron h-3 w-3 opacity-60 transition-transform" viewBox="0 0 12 12" aria-hidden="true">
       <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </button>
   <div
-    class="absolute right-0 top-full mt-2 hidden group-hover:block group-focus-within:block min-w-[220px] rounded-2xl p-2 z-50 border border-white/10 shadow-2xl shadow-black/60"
+    class="lang-menu absolute right-0 top-full mt-2 hidden min-w-[220px] rounded-2xl p-2 z-50 border border-white/10 shadow-2xl shadow-black/60"
     style="background-color: rgba(15, 15, 24, 0.96); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);"
+    role="menu"
   >
     {LOCALES.map((loc) => (
       <a
@@ -35,6 +37,7 @@ const cleanPath = path ?? stripLocaleFromPath(Astro.url.pathname);
           loc === locale ? 'text-text font-medium bg-white/5' : 'text-text-muted',
         ]}
         hreflang={LOCALE_META[loc].hreflang}
+        role="menuitem"
       >
         <span aria-hidden="true">{LOCALE_META[loc].flag}</span>
         <span>{LOCALE_META[loc].label}</span>
@@ -42,3 +45,48 @@ const cleanPath = path ?? stripLocaleFromPath(Astro.url.pathname);
     ))}
   </div>
 </div>
+
+<script>
+  // Click-to-toggle language switcher with outside-click and Escape to close
+  function initLangSwitchers() {
+    document.querySelectorAll<HTMLElement>('.lang-switcher').forEach((root) => {
+      if (root.dataset.bound === '1') return;
+      root.dataset.bound = '1';
+      const toggle = root.querySelector<HTMLButtonElement>('.lang-toggle');
+      const menu = root.querySelector<HTMLElement>('.lang-menu');
+      const chevron = root.querySelector<HTMLElement>('.lang-chevron');
+      if (!toggle || !menu) return;
+
+      const setOpen = (open: boolean) => {
+        root.dataset.open = open ? 'true' : 'false';
+        menu.classList.toggle('hidden', !open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (chevron) chevron.style.transform = open ? 'rotate(180deg)' : '';
+      };
+
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setOpen(root.dataset.open !== 'true');
+      });
+
+      // Click anywhere outside the menu closes it
+      document.addEventListener('click', (e) => {
+        if (root.dataset.open === 'true' && !root.contains(e.target as Node)) {
+          setOpen(false);
+        }
+      });
+
+      // Escape closes
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && root.dataset.open === 'true') {
+          setOpen(false);
+          toggle.focus();
+        }
+      });
+    });
+  }
+
+  initLangSwitchers();
+  // Re-init on Astro view transitions if/when enabled
+  document.addEventListener('astro:page-load', initLangSwitchers);
+</script>
