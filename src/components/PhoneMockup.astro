@@ -13,6 +13,8 @@ const demos: Record<Locale, {
   bubbleOut: string;
   composer: string;
   toolbar: { label: string; icon: string }[];
+  keys: { space: string; return: string; numeric: string };
+  rows: [string[], string[], string[]];
 }> = {
   en: {
     bubbleIn: 'Hey! Are you free Friday?',
@@ -24,6 +26,12 @@ const demos: Record<Locale, {
       { icon: '?',  label: 'Ask AI' },
       { icon: '⇄',  label: 'Translate' },
       { icon: '↻',  label: 'Paraphrase' },
+    ],
+    keys: { space: 'space', return: 'return', numeric: '123' },
+    rows: [
+      'qwertyuiop'.split(''),
+      'asdfghjkl'.split(''),
+      'zxcvbnm'.split(''),
     ],
   },
   de: {
@@ -37,6 +45,12 @@ const demos: Record<Locale, {
       { icon: '⇄',  label: 'Übersetzen' },
       { icon: '↻',  label: 'Umschreiben' },
     ],
+    keys: { space: 'Leerzeichen', return: 'Eingabe', numeric: '123' },
+    rows: [
+      'qwertzuiopü'.split(''),
+      'asdfghjklöä'.split(''),
+      'yxcvbnm'.split(''),
+    ],
   },
   fr: {
     bubbleIn: 'Salut ! Tu es libre vendredi ?',
@@ -48,6 +62,12 @@ const demos: Record<Locale, {
       { icon: '?',  label: "Demander à l'IA" },
       { icon: '⇄',  label: 'Traduire' },
       { icon: '↻',  label: 'Paraphraser' },
+    ],
+    keys: { space: 'espace', return: 'retour', numeric: '123' },
+    rows: [
+      'azertyuiop'.split(''),
+      'qsdfghjklm'.split(''),
+      'wxcvbn'.split(''),
     ],
   },
   es: {
@@ -61,6 +81,12 @@ const demos: Record<Locale, {
       { icon: '⇄',  label: 'Traducir' },
       { icon: '↻',  label: 'Parafrasear' },
     ],
+    keys: { space: 'espacio', return: 'intro', numeric: '123' },
+    rows: [
+      'qwertyuiop'.split(''),
+      'asdfghjklñ'.split(''),
+      'zxcvbnm'.split(''),
+    ],
   },
   pt: {
     bubbleIn: 'Olá! Estás livre na sexta?',
@@ -72,6 +98,12 @@ const demos: Record<Locale, {
       { icon: '?',  label: 'Perguntar IA' },
       { icon: '⇄',  label: 'Traduzir' },
       { icon: '↻',  label: 'Parafrasear' },
+    ],
+    keys: { space: 'espaço', return: 'enter', numeric: '123' },
+    rows: [
+      'qwertyuiop'.split(''),
+      'asdfghjklç'.split(''),
+      'zxcvbnm'.split(''),
     ],
   },
   'pt-br': {
@@ -85,16 +117,18 @@ const demos: Record<Locale, {
       { icon: '⇄',  label: 'Traduzir' },
       { icon: '↻',  label: 'Parafrasear' },
     ],
+    keys: { space: 'espaço', return: 'enter', numeric: '123' },
+    rows: [
+      'qwertyuiop'.split(''),
+      'asdfghjklç'.split(''),
+      'zxcvbnm'.split(''),
+    ],
   },
 };
 
 const d = demos[locale];
 const flag = LOCALE_META[locale].flag;
-
-// QWERTY layout (locale-specific would be ideal; en QWERTY works as a visual reference)
-const row1 = 'qwertyuiop'.split('');
-const row2 = 'asdfghjkl'.split('');
-const row3 = 'zxcvbnm'.split('');
+const [row1, row2, row3] = d.rows;
 ---
 
 <div class="relative mx-auto" style="width: 320px;">
@@ -141,29 +175,31 @@ const row3 = 'zxcvbnm'.split('');
           </div>
         </div>
 
-        <!-- KeyAI top toolbar — matches the actual iOS app -->
+        <!-- KeyAI top toolbar — matches the actual iOS app (horizontally scrollable) -->
         <!-- Light keyboard background like iOS system keyboard -->
-        <div class="bg-[#d1d4dc] px-1.5 pt-1.5 pb-0.5">
-          <div class="flex items-center gap-1 overflow-hidden">
-            <!-- Feature pill buttons (white rounded, black text, 14px-equivalent) -->
-            {d.toolbar.slice(0, 3).map((tool) => (
-              <div class="flex items-center gap-1 bg-white text-black rounded-[10px] px-1.5 py-1 text-[9px] font-semibold whitespace-nowrap shadow-sm">
+        <div class="bg-[#d1d4dc] pt-1.5 pb-0.5 relative">
+          <!-- Right-edge fade hint that more is scrollable -->
+          <div class="pointer-events-none absolute top-1.5 bottom-0.5 right-7 w-6 z-10 bg-gradient-to-l from-[#d1d4dc] to-transparent" aria-hidden="true"></div>
+          <!-- Close X is sticky -->
+          <div class="absolute top-1/2 -translate-y-1/2 right-1.5 text-[#0e0e18]/60 text-sm leading-none z-20">✕</div>
+          <div class="flex items-center gap-1 overflow-x-auto px-1.5 pr-7 scrollbar-hidden snap-x snap-mandatory">
+            <!-- Feature pill buttons (white rounded, black text) -->
+            {d.toolbar.map((tool) => (
+              <div class="flex items-center gap-1 bg-white text-black rounded-[10px] px-1.5 py-1 text-[9px] font-semibold whitespace-nowrap shadow-sm snap-start shrink-0">
                 <span class="text-[10px] leading-none">{tool.icon}</span>
                 <span class="leading-none">{tool.label}</span>
               </div>
             ))}
             <!-- AI Tools button: pink-red → purple gradient -->
-            <div class="flex items-center gap-0.5 rounded-[10px] px-1.5 py-1 text-[9px] font-semibold text-white whitespace-nowrap shadow-sm"
+            <div class="flex items-center gap-0.5 rounded-[10px] px-1.5 py-1 text-[9px] font-semibold text-white whitespace-nowrap shadow-sm shrink-0"
                  style="background: linear-gradient(135deg, rgb(230,77,128) 0%, rgb(153,51,230) 100%);">
               <span class="text-[10px] leading-none">✨</span>
               <span class="leading-none">Tools</span>
             </div>
             <!-- Language flag (white) -->
-            <div class="bg-white rounded-[10px] px-1.5 py-1 text-[10px] leading-none shadow-sm">
+            <div class="bg-white rounded-[10px] px-1.5 py-1 text-[10px] leading-none shadow-sm shrink-0">
               {flag}
             </div>
-            <!-- Close X -->
-            <div class="ml-auto text-[#0e0e18]/60 text-base leading-none pr-1">✕</div>
           </div>
         </div>
 
@@ -193,10 +229,10 @@ const row3 = 'zxcvbnm'.split('');
             <div class="px-1.5 py-1.5 text-center rounded-[5px] text-[10px] bg-[#abafb9] text-black font-medium shadow-[0_1px_0_rgba(0,0,0,0.35)]">⌫</div>
           </div>
           <div class="flex justify-center gap-[3px]">
-            <div class="px-2 py-1.5 rounded-[5px] text-[10px] bg-[#abafb9] text-black font-medium shadow-[0_1px_0_rgba(0,0,0,0.35)]">123</div>
+            <div class="px-2 py-1.5 rounded-[5px] text-[10px] bg-[#abafb9] text-black font-medium shadow-[0_1px_0_rgba(0,0,0,0.35)]">{d.keys.numeric}</div>
             <div class="px-1.5 py-1.5 rounded-[5px] text-[10px] bg-[#abafb9] text-black font-medium shadow-[0_1px_0_rgba(0,0,0,0.35)]">🌐</div>
-            <div class="flex-1 py-1.5 rounded-[5px] text-[10px] text-center bg-white text-black font-medium shadow-[0_1px_0_rgba(0,0,0,0.35)]">space</div>
-            <div class="px-2 py-1.5 rounded-[5px] text-[10px] bg-[#abafb9] text-black font-medium shadow-[0_1px_0_rgba(0,0,0,0.35)]">return</div>
+            <div class="flex-1 py-1.5 rounded-[5px] text-[10px] text-center bg-white text-black font-medium shadow-[0_1px_0_rgba(0,0,0,0.35)] truncate px-1">{d.keys.space}</div>
+            <div class="px-2 py-1.5 rounded-[5px] text-[10px] bg-[#abafb9] text-black font-medium shadow-[0_1px_0_rgba(0,0,0,0.35)]">{d.keys.return}</div>
           </div>
         </div>
       </div>

@@ -55,3 +55,7 @@ body {
 
 details summary::-webkit-details-marker { display: none; }
 details summary { list-style: none; }
+
+/* Hide scrollbar on horizontally-scrollable elements (keyboard toolbar) */
+.scrollbar-hidden::-webkit-scrollbar { display: none; }
+.scrollbar-hidden { -ms-overflow-style: none; scrollbar-width: none; }
