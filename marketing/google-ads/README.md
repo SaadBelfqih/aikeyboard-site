@@ -31,6 +31,14 @@ Ready-to-import campaign assets for **bestaikeyboard.com** / **App ID 6466343783
 
 Scale up after 2 weeks based on which campaigns hit < $30 CPI (US/EU) / < $10 CPI (BR).
 
+## "Free" keywords are PAUSED on import
+
+The `Free AI Keyboard` ad group (7 keywords targeting "best free ai keyboard", "free ai keyboard for iphone", etc.) imports as **Paused** by default. Reason: searchers looking for "free" specifically have ~50–70% lower trial-to-paid conversion. They drive installs but not paying subscribers.
+
+**Re-enable after week 2 IF:** your buyer-intent ad groups (Best AI Keyboard, vs/*, WhatsApp) are profitable and you have budget to test. When you re-enable, set a Target CPA bid strategy on that ad group at $5 so Google only spends if it can hit that cost.
+
+The `/free-ai-keyboard/` landing page stays live — it's still good for SEO. We just don't pour Google money into it.
+
 ## What to do BEFORE turning on
 
 - [ ] Set up GA4 on bestaikeyboard.com (`G-...` measurement ID)

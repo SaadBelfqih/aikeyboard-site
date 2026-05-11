@@ -5,7 +5,7 @@
 ```
 US - Search                ($12/day)
 ├── Best AI Keyboard       (12 keywords → /)
-├── Free AI Keyboard       (7 keywords  → /free-ai-keyboard/)
+├── Free AI Keyboard       (7 keywords  → /free-ai-keyboard/)  [PAUSED — re-enable in week 3 with Target CPA $5]
 ├── WhatsApp Intent        (4 keywords  → /)
 ├── vs Grammarly           (4 keywords  → /vs/grammarly/)
 ├── vs ChatGPT             (4 keywords  → /vs/chatgpt-keyboard/)
@@ -103,3 +103,18 @@ Pause a keyword if:
 ## When to expand
 
 Add a **UAC (Universal App Campaign)** campaign once Search has logged at least **30 App Store badge click conversions**. UAC needs that signal to optimize. Start at $15/day, target CPA of $5.
+
+## When to re-enable the "Free AI Keyboard" ad group
+
+The `Free AI Keyboard` ad group ships **Paused** in `01-keywords-search.csv`. "Free" searchers convert to paid at ~50–70% lower rates than buyer-intent searchers, so we don't want them eating buyer-intent budget on day 1.
+
+**Re-enable conditions (all three must be true):**
+1. Buyer-intent ad groups have been running ≥ 2 weeks
+2. Best AI Keyboard ad group has CPA ≤ $8 (or wherever your target lands)
+3. You have ≥ $50/week of unallocated budget to test with
+
+**How to re-enable:**
+1. Google Ads → US – Search → Free AI Keyboard → toggle ad group to Enabled
+2. Set the **ad group bid strategy** to **Target CPA** with target = $5
+3. Cap daily spend at $2/day (Google Ads → Campaign → Settings → "Limit spend for this ad group" if available, otherwise budget at campaign level)
+4. Run 7 days, check trial-start data in App Store Connect → Sources for `ct=web-en`. If trial-to-paid conversion from this ad group is < 30% of buyer-intent ad groups, pause again.
