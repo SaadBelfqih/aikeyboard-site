@@ -1,0 +1,49 @@
+---
+import type { Locale } from '~/i18n/locales';
+import { TESTIMONIALS, TESTIMONIALS_SECTION_TITLE } from '~/i18n/testimonials';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const data = TESTIMONIALS[locale];
+const heading = TESTIMONIALS_SECTION_TITLE[locale];
+
+// Stable but visually varied avatar assignment per testimonial
+const avatars = ['/avatars/u1.jpg', '/avatars/u2.jpg', '/avatars/u3.jpg', '/avatars/u4.jpg', '/avatars/u5.jpg'];
+---
+
+<section class="py-20 sm:py-28 border-t border-border">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-1 text-amber-300 text-base">★★★★★</div>
+      <h2 class="mt-3 font-display font-bold text-3xl sm:text-4xl lg:text-5xl">
+        <span class="headline-gradient">{heading.title}</span>
+      </h2>
+      <p class="mt-3 text-text-muted">{heading.subtitle}</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-4">
+      {data.map((tt, i) => (
+        <figure class="glass rounded-3xl p-6 sm:p-7 flex flex-col">
+          <div class="flex items-center gap-1 text-amber-300 text-sm mb-3">★★★★★</div>
+          <blockquote class="text-base leading-relaxed flex-1">
+            <p class="text-text">"{tt.quote}"</p>
+          </blockquote>
+          <figcaption class="mt-5 flex items-center gap-3">
+            <img
+              src={avatars[i % avatars.length]}
+              alt=""
+              loading="lazy"
+              width="40"
+              height="40"
+              class="h-10 w-10 rounded-full object-cover"
+            />
+            <div class="text-sm">
+              <div class="font-medium text-text">{tt.author} <span class="ml-1">{tt.country}</span></div>
+              {tt.feature && <div class="text-xs text-text-muted">{tt.feature}</div>}
+            </div>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

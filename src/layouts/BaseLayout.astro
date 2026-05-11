@@ -25,7 +25,8 @@ const canonical = new URL(canonicalPath, SITE).href;
 
 const pageTitle = title ?? ui.meta.title;
 const pageDesc = description ?? ui.meta.description;
-const ogImg = ogImage ?? `${SITE}/og/og-${locale}.png`;
+// Fallback to the app icon as OG until per-locale 1200x630 images are generated.
+const ogImg = ogImage ?? `${SITE}/icon-1024.png`;
 
 // hreflang alternates for every locale
 const alternates = LOCALES.map((loc) => ({

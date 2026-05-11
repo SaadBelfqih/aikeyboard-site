@@ -82,9 +82,9 @@ export const UI: Record<Locale, UIStrings> = {
     },
     hero: {
       h1: 'The Best AI Keyboard for iPhone',
-      subhead: 'Fix grammar, change tone, translate, and reply with AI — right from your keyboard, inside any app.',
-      socialProof: 'Join 100,000+ people writing better with AI',
-      rating: '4.6 on the App Store',
+      subhead: '14 AI writing tools live inside your iPhone keyboard. Fix grammar, change tone, translate, and reply with AI in any app — without copy-pasting into ChatGPT.',
+      socialProof: '100,000+ people write better with AI · 4.6★ on the App Store',
+      rating: '4.6★ · 60+ languages · iOS 15+',
       download: 'Download on the App Store',
     },
     features: {
@@ -97,8 +97,8 @@ export const UI: Record<Locale, UIStrings> = {
       subtitle: 'No copy-paste. No app switching. AI is always one tap away.',
     },
     privacy: {
-      title: 'Private by default',
-      body: "We only send text to OpenAI when you tap an AI feature. Apple automatically switches to the system keyboard for passwords, credit card numbers, and other sensitive fields. Your typing is never silently captured.",
+      title: 'Your typing is never logged',
+      body: 'KeyAI only sends text to AI when you tap a feature — never silently, never in password fields. iOS guarantees the second part: Apple auto-switches to the system keyboard for passwords and card numbers, so KeyAI literally cannot see them.',
     },
     pricing: {
       eyebrow: 'Pricing',
@@ -120,15 +120,15 @@ export const UI: Record<Locale, UIStrings> = {
       title: 'Frequently asked questions',
       subtitle: 'Everything you need to know about KeyAI.',
       items: [
-        { q: 'What is KeyAI?', a: 'KeyAI is an AI-powered keyboard for iPhone. It adds 10+ writing tools — grammar check, tone change, translation, paraphrase, replies, and more — right inside your keyboard, so you can use AI in any app without copy-pasting into ChatGPT.' },
-        { q: 'How is this different from ChatGPT?', a: "ChatGPT is a separate app — you have to leave your conversation, type your message there, then copy the response back. KeyAI runs inside your keyboard in every app, so the AI is always one tap away in iMessage, WhatsApp, Mail, Notes, X, Instagram — wherever you're already writing." },
-        { q: 'How is this different from Grammarly Keyboard?', a: 'Grammarly is mostly grammar correction. KeyAI does that plus tone change, translation in 55+ languages, AI-generated replies, paraphrasing, synonyms, and asking AI any question — all from inside your keyboard.' },
-        { q: 'Does KeyAI work with my native language?', a: 'Yes — KeyAI supports 60+ keyboard layouts including English, Spanish, French, German, Portuguese, Italian, Dutch, Arabic, Japanese, Korean, and more.' },
-        { q: 'Is my typing private?', a: "Yes. We only transmit text to OpenAI when you tap a feature — we never silently capture what you're writing. Apple also automatically switches to the system keyboard for password fields, credit card numbers, and other sensitive inputs." },
-        { q: 'Why does it ask for Full Access?', a: 'Full Access is required by iOS for any third-party keyboard to use the internet — which KeyAI needs to talk to the AI. We use it only for that, never to log your keystrokes.' },
-        { q: 'How much does it cost?', a: 'KeyAI is $4.99 / week or $39.99 / year (saving 84%). New users get a 3-day free trial. Billing is handled by the App Store — cancel anytime in your Apple ID subscriptions.' },
+        { q: 'What is KeyAI?', a: 'An iPhone keyboard with 14 AI writing tools built in — grammar, tone change, translation, AI replies, paraphrasing, ask-AI, and more. All inside the keyboard, in every app. No copy-paste to ChatGPT.' },
+        { q: 'How is this different from ChatGPT?', a: "ChatGPT is a separate app — you leave your conversation, type the message there, copy the response back. KeyAI lives in your keyboard, so the AI is always one tap away — in iMessage, WhatsApp, Mail, Notes, X, Instagram, wherever you're already typing." },
+        { q: 'How is this different from Grammarly Keyboard?', a: 'Grammarly fixes grammar. KeyAI fixes grammar plus 13 other things — tone change, translation in 55+ languages, AI-generated replies, paraphrasing, synonyms, and asking AI anything. If you only fix typos, Grammarly is fine. If you actually write on your iPhone, KeyAI is the upgrade.' },
+        { q: 'Does KeyAI work with my native language?', a: '60+ keyboard layouts including English, Spanish, French, German, Portuguese, Italian, Dutch, Arabic, Japanese, Korean, and more. Translation supports 55+ languages.' },
+        { q: 'Is my typing private?', a: "Yes. Text is only sent to AI when you tap a feature — we never silently capture what you're writing. iOS also auto-switches to the system keyboard for password fields and card numbers, so KeyAI literally cannot see those." },
+        { q: 'Why does it ask for Full Access?', a: 'iOS requires Full Access for any third-party keyboard to use the internet — which KeyAI needs to talk to the AI. We use it only for that, never to log keystrokes.' },
+        { q: 'How much does it cost?', a: "There's a 3-day free trial. After that, choose Weekly, Yearly (best value), or Lifetime — Apple handles all billing through the App Store. Cancel anytime in your Apple ID subscriptions." },
         { q: 'Will it work on my iPad?', a: 'Yes — KeyAI works on iPhone and iPad with the same subscription.' },
-        { q: 'How do I install KeyAI?', a: 'Download from the App Store, then go to Settings → General → Keyboard → Keyboards → Add New Keyboard → KeyAI, and enable Allow Full Access. Takes 30 seconds.' },
+        { q: 'How do I install KeyAI?', a: 'Download from the App Store, then Settings → General → Keyboard → Keyboards → Add New Keyboard → KeyAI, and enable Allow Full Access. Takes 30 seconds.' },
         { q: 'Can I cancel anytime?', a: 'Yes. Subscription is managed in your Apple ID settings — cancel any time before the trial ends and you will not be charged.' },
       ],
     },
@@ -147,7 +147,7 @@ export const UI: Record<Locale, UIStrings> = {
     },
     meta: {
       title: 'KeyAI · The Best AI Keyboard for iPhone',
-      description: 'KeyAI is the best AI keyboard for iPhone — fix grammar, change tone, translate, and reply with AI right from your keyboard in any app. 60+ languages. 3-day free trial. Join 100,000+ users.',
+      description: 'The best AI keyboard for iPhone. 14 AI tools — grammar, tone, translate, reply — inside every app. 60+ languages. 3-day free trial. 100,000+ users.',
       ogTitle: 'KeyAI — The Best AI Keyboard for iPhone',
     },
   },
@@ -227,7 +227,7 @@ export const UI: Record<Locale, UIStrings> = {
     },
     meta: {
       title: 'KeyAI · Die beste KI-Tastatur für iPhone',
-      description: 'KeyAI ist die beste KI-Tastatur für iPhone — Grammatik prüfen, Tonfall ändern, übersetzen und mit KI antworten, direkt aus deiner Tastatur in jeder App. 60+ Sprachen. 3-Tage kostenlose Testphase. Über 100.000 Nutzer.',
+      description: 'Die beste KI-Tastatur für iPhone. 14 KI-Tools — Grammatik, Tonfall, Übersetzung, Antworten — in jeder App. 60+ Sprachen. 3 Tage kostenlos. Über 100.000 Nutzer.',
       ogTitle: 'KeyAI — Die beste KI-Tastatur für iPhone',
     },
   },
@@ -307,7 +307,7 @@ export const UI: Record<Locale, UIStrings> = {
     },
     meta: {
       title: 'KeyAI · Le meilleur clavier IA pour iPhone',
-      description: "KeyAI est le meilleur clavier IA pour iPhone — corrigez la grammaire, changez le ton, traduisez et répondez avec l'IA directement depuis votre clavier dans n'importe quelle app. 60+ langues. 3 jours gratuits. Plus de 100 000 utilisateurs.",
+      description: 'Le meilleur clavier IA pour iPhone. 14 outils IA — grammaire, ton, traduction — dans toutes vos apps. 60+ langues. 3 jours gratuits. 100K+ utilisateurs.',
       ogTitle: 'KeyAI — Le meilleur clavier IA pour iPhone',
     },
   },
@@ -387,7 +387,7 @@ export const UI: Record<Locale, UIStrings> = {
     },
     meta: {
       title: 'KeyAI · El mejor teclado IA para iPhone',
-      description: 'KeyAI es el mejor teclado IA para iPhone — corrige gramática, cambia el tono, traduce y responde con IA directamente desde tu teclado en cualquier app. 60+ idiomas. 3 días gratis. Más de 100.000 usuarios.',
+      description: 'El mejor teclado IA para iPhone. 14 herramientas IA — gramática, tono, traducir, responder — en cada app. 60+ idiomas. 3 días gratis. +100.000 usuarios.',
       ogTitle: 'KeyAI — El mejor teclado IA para iPhone',
     },
   },
@@ -467,7 +467,7 @@ export const UI: Record<Locale, UIStrings> = {
     },
     meta: {
       title: 'KeyAI · O melhor teclado IA para iPhone',
-      description: 'O KeyAI é o melhor teclado IA para iPhone — corrige gramática, muda o tom, traduz e responde com IA diretamente do teu teclado em qualquer app. 60+ idiomas. 3 dias grátis. Mais de 100.000 utilizadores.',
+      description: 'O melhor teclado IA para iPhone. 14 ferramentas IA — gramática, tom, traduzir, responder — em cada app. 60+ idiomas. 3 dias grátis. +100.000 utilizadores.',
       ogTitle: 'KeyAI — O melhor teclado IA para iPhone',
     },
   },
@@ -547,7 +547,7 @@ export const UI: Record<Locale, UIStrings> = {
     },
     meta: {
       title: 'KeyAI · O melhor teclado IA para iPhone',
-      description: 'O KeyAI é o melhor teclado IA para iPhone — corrija gramática, mude o tom, traduza e responda com IA direto do seu teclado em qualquer app. 60+ idiomas. 3 dias grátis. Mais de 100.000 usuários.',
+      description: 'O melhor teclado IA para iPhone. 14 ferramentas IA — gramática, tom, traduzir, responder — em cada app. 60+ idiomas. 3 dias grátis. +100.000 usuários.',
       ogTitle: 'KeyAI — O melhor teclado IA para iPhone',
     },
   },
