@@ -1,0 +1,163 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Nav from '~/components/Nav.astro';
+import Footer from '~/components/Footer.astro';
+import FinalCTA from '~/components/FinalCTA.astro';
+import AppStoreBadge from '~/components/AppStoreBadge.astro';
+
+const locale = 'en' as const;
+const title = 'Best Free AI Keyboard for iPhone — KeyAI (3-Day Free Trial)';
+const description = 'Looking for a free AI keyboard for iPhone? KeyAI gives you 3 days free, no card required — 14 AI tools, 60+ languages, every app. Here\'s how it compares to the truly-free options.';
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Best Free AI Keyboard for iPhone in 2026',
+  description,
+  inLanguage: 'en-US',
+  author: { '@type': 'Organization', name: 'KeyAI' },
+  publisher: { '@type': 'Organization', name: 'KeyAI' },
+  datePublished: '2026-05-11',
+  dateModified: '2026-05-11',
+};
+---
+
+<BaseLayout locale={locale} path="/free-ai-keyboard" title={title} description={description} schema={articleSchema}>
+  <Nav locale={locale} />
+  <main>
+    <!-- Hero -->
+    <section class="pt-12 sm:pt-16 pb-10">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="inline-flex items-center gap-2 rounded-full bg-success/15 text-success px-3 py-1 text-xs font-medium border border-success/30 mb-5">
+          <span class="h-1.5 w-1.5 rounded-full bg-success animate-pulse"></span>
+          3 days free · No card required to start
+        </div>
+        <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.05]">
+          <span class="headline-gradient">The Best Free AI Keyboard for iPhone</span>
+        </h1>
+        <p class="mt-6 text-lg text-text-muted leading-relaxed max-w-2xl">
+          KeyAI gives every new user 3 days free — full access to 14 AI writing tools in every app, no payment info required to start the trial. Here's the honest breakdown of what's really free in the AI keyboard category, and where KeyAI fits.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 items-start">
+          <AppStoreBadge locale={locale} label="Start 3 days free" size="lg" />
+          <span class="text-xs text-text-muted self-center">Cancel before day 3, pay nothing.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- The honest answer -->
+    <section class="pb-16">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="font-display font-bold text-2xl sm:text-3xl mb-4">
+          <span class="headline-gradient">Is any AI keyboard 100% free?</span>
+        </h2>
+        <div class="prose-page text-text-muted leading-relaxed space-y-4">
+          <p>Short answer: <strong class="text-text">not really</strong>. Every AI keyboard worth using talks to a paid AI model (OpenAI, Anthropic, or a similar provider) — and someone has to pay for those API calls. The keyboards you'll find on the App Store fall into three buckets:</p>
+          <ol class="list-decimal pl-6 space-y-2">
+            <li><strong class="text-text">Truly free, but limited.</strong> Apple's built-in keyboard plus Apple Intelligence Writing Tools on iPhone 15 Pro and newer. Free, no subscription — but no translation, only 3 tone presets, and you need an eligible device.</li>
+            <li><strong class="text-text">Free download + paid AI features.</strong> Grammarly Keyboard is free for spell-check and basic grammar. Tone change is behind Premium ($5.83+/month).</li>
+            <li><strong class="text-text">Paid subscription with a free trial.</strong> KeyAI, CleverType, TypeAI, Keybot. The trial period is the genuinely-free portion.</li>
+          </ol>
+          <p>If you want every AI tool — grammar, tone, translation, AI replies, paraphrase, ask AI — there is no fully-free option in 2026. The best "free" entry point is a trial.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison table -->
+    <section class="pb-16">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="font-display font-bold text-2xl sm:text-3xl mb-6">
+          <span class="headline-gradient">Free AI keyboard options compared</span>
+        </h2>
+        <div class="glass rounded-3xl overflow-hidden">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-border bg-white/[0.02]">
+                <th class="text-left text-xs uppercase tracking-wider text-text-muted font-semibold py-4 px-4 sm:px-6">Option</th>
+                <th class="text-left text-xs uppercase tracking-wider text-text-muted font-semibold py-4 px-4 sm:px-6">Truly free?</th>
+                <th class="text-left text-xs uppercase tracking-wider text-text-muted font-semibold py-4 px-4 sm:px-6">Catch</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-border">
+                <td class="py-3.5 px-4 sm:px-6"><strong class="text-text">KeyAI (3-day free trial)</strong></td>
+                <td class="py-3.5 px-4 sm:px-6 text-success">Yes, for 3 days</td>
+                <td class="py-3.5 px-4 sm:px-6 text-text-muted">Converts to $4.99/wk if not cancelled — set a 2-day reminder.</td>
+              </tr>
+              <tr class="border-b border-border bg-white/[0.01]">
+                <td class="py-3.5 px-4 sm:px-6">Apple Intelligence</td>
+                <td class="py-3.5 px-4 sm:px-6 text-success">Yes, forever</td>
+                <td class="py-3.5 px-4 sm:px-6 text-text-muted">iPhone 15 Pro or newer only. No translation. 3 tones.</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="py-3.5 px-4 sm:px-6">Grammarly Keyboard (Free)</td>
+                <td class="py-3.5 px-4 sm:px-6 text-success">Spell + basic grammar</td>
+                <td class="py-3.5 px-4 sm:px-6 text-text-muted">Tone, paraphrase, generative writing all paid.</td>
+              </tr>
+              <tr class="border-b border-border bg-white/[0.01]">
+                <td class="py-3.5 px-4 sm:px-6">SwiftKey</td>
+                <td class="py-3.5 px-4 sm:px-6 text-success">Yes, ad-supported</td>
+                <td class="py-3.5 px-4 sm:px-6 text-text-muted">Predictive text only — no in-keyboard AI tools.</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="py-3.5 px-4 sm:px-6">"Free" listings with hidden subs</td>
+                <td class="py-3.5 px-4 sm:px-6 text-text-muted/60">No</td>
+                <td class="py-3.5 px-4 sm:px-6 text-text-muted">Free download, paywall after 1 use.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why KeyAI's trial is the best free entry -->
+    <section class="pb-16">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="font-display font-bold text-2xl sm:text-3xl mb-4">
+          <span class="headline-gradient">Why KeyAI's free trial is the best entry point</span>
+        </h2>
+        <ul class="space-y-3 text-text-muted leading-relaxed">
+          <li class="flex gap-3"><span class="text-success mt-1">✓</span><div><strong class="text-text">No card to start.</strong> Apple's StoreKit handles the subscription — if you already have an Apple ID, you tap "Start free trial" and you're in.</div></li>
+          <li class="flex gap-3"><span class="text-success mt-1">✓</span><div><strong class="text-text">Every feature unlocked.</strong> No "free tier with watered-down AI." Day 1 you get all 14 tools, 60+ languages, every app.</div></li>
+          <li class="flex gap-3"><span class="text-success mt-1">✓</span><div><strong class="text-text">Cancel in 10 seconds.</strong> Settings → Apple ID → Subscriptions → tap to cancel. No emails, no calls, no retention dark patterns.</div></li>
+          <li class="flex gap-3"><span class="text-success mt-1">✓</span><div><strong class="text-text">Works on iPhone 12, iPhone 13, iPhone 14 — and Pro.</strong> Apple Intelligence requires iPhone 15 Pro or newer. KeyAI runs on every iPhone with iOS 15 or later.</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Related reading -->
+    <section class="pb-16">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="font-display font-bold text-2xl sm:text-3xl mb-4">
+          <span class="headline-gradient">Related guides</span>
+        </h2>
+        <ul class="grid sm:grid-cols-2 gap-3">
+          <li><a href="/blog/best-ai-keyboards-iphone-2026/" class="block glass rounded-2xl p-4 hover:bg-white/[0.06] transition-colors">
+            <div class="font-semibold mb-1">Best AI Keyboard Apps for iPhone in 2026</div>
+            <div class="text-xs text-text-muted">Full ranking of every AI keyboard worth installing.</div>
+          </a></li>
+          <li><a href="/vs/apple-intelligence/" class="block glass rounded-2xl p-4 hover:bg-white/[0.06] transition-colors">
+            <div class="font-semibold mb-1">KeyAI vs Apple Intelligence</div>
+            <div class="text-xs text-text-muted">Free, native, and only on iPhone 15 Pro+ — does that match you?</div>
+          </a></li>
+          <li><a href="/vs/grammarly/" class="block glass rounded-2xl p-4 hover:bg-white/[0.06] transition-colors">
+            <div class="font-semibold mb-1">KeyAI vs Grammarly Keyboard</div>
+            <div class="text-xs text-text-muted">Grammarly is free for grammar. KeyAI adds 13 more tools.</div>
+          </a></li>
+          <li><a href="/blog/how-to-add-ai-keyboard-iphone/" class="block glass rounded-2xl p-4 hover:bg-white/[0.06] transition-colors">
+            <div class="font-semibold mb-1">How to Add an AI Keyboard to iPhone</div>
+            <div class="text-xs text-text-muted">30-second install guide + the one toggle people miss.</div>
+          </a></li>
+        </ul>
+      </div>
+    </section>
+
+    <FinalCTA locale={locale} />
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style is:global>
+  .prose-page p { font-size: 1.05rem; }
+  .prose-page strong { color: var(--color-text); font-weight: 600; }
+</style>

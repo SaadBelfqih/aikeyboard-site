@@ -27,6 +27,7 @@ const year = new Date().getFullYear();
           <li><a href={`${localizedPath(locale, '/')}${localizedPath(locale, '/') === '/' ? '' : ''}#features`} class="text-text-muted hover:text-text transition-colors">{ui.nav.features}</a></li>
           <li><a href={`${localizedPath(locale, '/')}${localizedPath(locale, '/') === '/' ? '' : ''}#pricing`} class="text-text-muted hover:text-text transition-colors">{ui.nav.pricing}</a></li>
           <li><a href={localizedPath(locale, '/blog')} class="text-text-muted hover:text-text transition-colors">{ui.nav.blog}</a></li>
+          {locale === 'en' && <li><a href="/free-ai-keyboard/" class="text-text-muted hover:text-text transition-colors">Free AI Keyboard</a></li>}
         </ul>
       </div>
 
